@@ -2,8 +2,7 @@
 layout: post
 title:  "react新手教程"
 date:   2017-02-23
-excerpt: "react新手教程，包括jsx语法,react基本用法讲解以及react生命周期等...，github仓库[https://github.com/Rynxiao/react-newer](https://github.com/Rynxiao/react-newer)。JSX语法，const element = Hello, world!;"
-codes: true
+categories: 技术
 tag: [react, 框架学习]
 comments: true
 ---

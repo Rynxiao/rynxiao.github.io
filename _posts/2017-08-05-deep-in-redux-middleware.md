@@ -1,11 +1,10 @@
 ---
 layout: post
 title:  "深入理解Redux之中间件(middleware)"
+subtitle: 'react系列-redux'
 date:   2017-08-05
-excerpt: "redux深入理解之中间件(middleware),reduce() 方法接收一个函数作为累加器（accumulator），数组中的每个值（从左到右）开始缩减，最终为一个值。arr.reduce([callback, initialValue]),关于`reduce`的用法...."
-codes: true
+categories: 技术
 tag: [redux, javascript]
-comments: true
 ---
 
 ### redux深入理解之中间件(middleware)

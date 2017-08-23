@@ -2,8 +2,7 @@
 layout: post
 title:  "谈谈webpack2的一些事"
 date:   2017-06-16
-excerpt: "从v1迁移到v2，1. 配置类型。在webpack1的时候，主要是通过导出单个`object`来进行配置。例如下面的配置：，而在webpack2中，则有三种方式来灵活配置，可以针对不同的场景。1.1 通过不同环境变量导出不同的配置文件...."
-codes: true
+categories: 技术
 tag: [webpack, javascript]
 comments: true
 ---

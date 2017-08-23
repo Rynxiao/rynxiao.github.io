@@ -2,8 +2,7 @@
 layout: post
 title:  "webpack入门指南"
 date:   2017-02-23
-excerpt: "关门webpack的一些简介以及基本使用方法，配置讲解，并实例分析。1. 导语，github仓库 [https://github.com/Rynxiao/webpack-test](https://github.com/Rynxiao/webpack-test)。1.1 什么叫做webpack，webpack is a module bundler.webpack takes modules with dependencies and generates..."
-codes: true
+categories: 技术
 tag: [webpack, 前端工具]
 comments: true
 ---
