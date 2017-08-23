@@ -27,7 +27,7 @@ tags: jekyll github blog
 由于jekyll是基于ruby语言开发的，因此我们需要安装ruby以及ruby相关的工具(DevKit)。具体的ruby可以到[官网](http://www.ruby-lang.org/en/downloads/)上去下载，不过毕竟是国外网站，如果没有好的翻墙工具还是比较慢的。这里我已经准备好了，点[ruby](http://pan.baidu.com/s/1eSNz3iE)和[DevKit](http://pan.baidu.com/s/1csz3uY)下载。点击exe文件进行自定义目录安装。安装完成之后，确保ruby的环境已经配置到了系统的变量中。比如我的DevKit安装目录是：D:\develop\DevKit。进入DevKit目录，输入如下命令：
 
 ```
- ```cmd
+ ```
 C:\Users> cd D:\develop\DevKit
 C:\Users> D:
 D:\develop\DevKit> ruby dk.rb init
@@ -44,7 +44,7 @@ D:\develop\DevKit> ruby dk.rb install
 使用`gem sources`发现是`https://rubygems.org/`，国外网站的通病就是下载很慢，因此我们需要替换一个国内的源。
 
 ```
- ```cmd
+ ```
 gem sources -add https://gems.ruby-china.org/ --remove https://rubygems.org/ 替换源
 gem sources -u 更新缓存
 gem sources 查看替换后的源
@@ -60,7 +60,7 @@ gem sources 查看替换后的源
 经过上面两步之后，我们就可以安装jekyll了。调用命令：
 
 ```
- ```cmd
+ ```
 gem install jekyll
  ```
 ```
@@ -76,7 +76,7 @@ gem install jekyll
 至此我们就可以用jekyll来创建博客了，具体命令如下：
 
 ```
- ```cmd
+ ```
 jekyll new myblog
 cd myblog
 jekyll server
@@ -94,7 +94,7 @@ jekyll server
 看到jekyll启动服务的4000端口已经被占用，我们需要找到占用的程序，然后干掉它。
 
 ```
- ```cmd
+ ```
 // 1.查看所有的端口使用情况，显示PID
 netstat -ano 
 // 2.找到端口被占用的PID，比如PID为14325
@@ -147,7 +147,7 @@ jekyll的目录结构，最重要的就是`_includes`,`_layouts`,`_posts`
 * 在本地创建ssh key
 
 ```
- ```cmd
+ ```
 ssh-keygen -t rsa -C "yuzhongzi91@sina.com" //这里以我的邮箱为例子，自行替换
  ```
 ```
@@ -163,7 +163,7 @@ ssh-keygen -t rsa -C "yuzhongzi91@sina.com" //这里以我的邮箱为例子，�
 在cmd中输入命令，显示出自己的用户名，则说明已经成功连上github。
 
 ```
- ```cmd
+ ```
 ssh -T git@github.com 
  ```
 ```
@@ -173,7 +173,7 @@ ssh -T git@github.com
 * 设置git的username和email
 
 ```
- ```cmd
+ ```
 git config --global user.name "rynxiao"
 git config --global user.email "yuzhongzi91@sina.com"
  ```
@@ -186,7 +186,7 @@ git config --global user.email "yuzhongzi91@sina.com"
 然后进入你本地的博客目录，例如是`myblog`，输入如下命令，下面以我的用户名为例：
 
 ```
- ```cmd
+ ```
 git init                                                                // 初始化git仓库
 git add .                                                               // 添加文件夹中的所有内容到本地仓库
 git commit -m "first commit"                                            // 添加评论
