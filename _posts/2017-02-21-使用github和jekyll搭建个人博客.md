@@ -1,14 +1,11 @@
 ---
 layout: post
-title:  "使用github+jekyll搭建个人博客"
-date:   2017-02-21
-excerpt: "搭建博客之后的第一篇文章——记录我使用github+jekyll搭建个人博客的经历。聊聊起初，每次看到大牛们的博客，都会激起一颗一定要搭建自己博客的心，毕竟有着一颗向大牛们看齐的心。但是一直不知道如何下手，从最初的csdn写写博客到在github上建立仓库写代码分享，虽然也能够记录一些事情，但是总感觉缺少点什么——对，就是像是这东西并不是自己的。后来偶然机会知道了..."
-codes: true
-tag:
-- jekyll 
-- github
-- blog
-comments: true
+title: '使用github+jekyll搭建个人博客'
+subtitle: '给自己一个小空间'
+date: 2017-02-21
+categories: 技术
+cover: 'http://on2171g4d.bkt.clouddn.com/jekyll-theme-h2o-postcover.jpg'
+tags: jekyll github blog
 ---
 
 ## 聊聊起初
@@ -29,12 +26,14 @@ comments: true
 
 由于jekyll是基于ruby语言开发的，因此我们需要安装ruby以及ruby相关的工具(DevKit)。具体的ruby可以到[官网](http://www.ruby-lang.org/en/downloads/)上去下载，不过毕竟是国外网站，如果没有好的翻墙工具还是比较慢的。这里我已经准备好了，点[ruby](http://pan.baidu.com/s/1eSNz3iE)和[DevKit](http://pan.baidu.com/s/1csz3uY)下载。点击exe文件进行自定义目录安装。安装完成之后，确保ruby的环境已经配置到了系统的变量中。比如我的DevKit安装目录是：D:\develop\DevKit。进入DevKit目录，输入如下命令：
 
-{% highlight cmd %}
+```
+ ```cmd
 C:\Users> cd D:\develop\DevKit
 C:\Users> D:
 D:\develop\DevKit> ruby dk.rb init
 D:\develop\DevKit> ruby dk.rb install
-{% endhighlight %}
+ ```
+```
 
 可以使用`gem -v` 和 `ruby -v`来确认是否已经安装成功
 
@@ -44,11 +43,13 @@ D:\develop\DevKit> ruby dk.rb install
 
 使用`gem sources`发现是`https://rubygems.org/`，国外网站的通病就是下载很慢，因此我们需要替换一个国内的源。
 
-{% highlight cmd %}
+```
+ ```cmd
 gem sources -add https://gems.ruby-china.org/ --remove https://rubygems.org/ 替换源
 gem sources -u 更新缓存
 gem sources 查看替换后的源
-{% endhighlight %}
+ ```
+```
 
 ![Markdown](http://p1.bpimg.com/572179/d6344eefc5dd1f10.png)
 
@@ -58,9 +59,11 @@ gem sources 查看替换后的源
 
 经过上面两步之后，我们就可以安装jekyll了。调用命令：
 
-{% highlight cmd %}
+```
+ ```cmd
 gem install jekyll
-{% endhighlight %}
+ ```
+```
 
 之后使用`jekyll -v`来查看jekyll版本，可以看到我的版本是3.4.0。记录一下，本人并没有安装3.0.0以前的版本，这是在网上看到的:
 
@@ -72,11 +75,13 @@ gem install jekyll
 
 至此我们就可以用jekyll来创建博客了，具体命令如下：
 
-{% highlight cmd %}
+```
+ ```cmd
 jekyll new myblog
 cd myblog
 jekyll server
-{% endhighlight %}
+ ```
+```
 
 然后在`http://127.0.0.1:4000`端口来查看你创建的博客。
 
@@ -88,14 +93,16 @@ jekyll server
 
 看到jekyll启动服务的4000端口已经被占用，我们需要找到占用的程序，然后干掉它。
 
-{% highlight cmd %}
+```
+ ```cmd
 // 1.查看所有的端口使用情况，显示PID
 netstat -ano 
 // 2.找到端口被占用的PID，比如PID为14325
 tasklist /svc /FI "PID eq 14325"
 // 3.打开任务管理器，找到相应的程序，杀掉就好
 // FoxitProtect.exe 默认会绑定4000端口，因此杀掉这个进程就行
-{% endhighlight %}
+ ```
+```
 
 如下图，正常启动如下：
 
@@ -139,9 +146,11 @@ jekyll的目录结构，最重要的就是`_includes`,`_layouts`,`_posts`
 
 * 在本地创建ssh key
 
-{% highlight cmd %}
+```
+ ```cmd
 ssh-keygen -t rsa -C "yuzhongzi91@sina.com" //这里以我的邮箱为例子，自行替换
-{% endhighlight %}
+ ```
+```
 
 * 将公钥中的内容复值到github中的ssh keys中
 
@@ -153,18 +162,22 @@ ssh-keygen -t rsa -C "yuzhongzi91@sina.com" //这里以我的邮箱为例子，�
 
 在cmd中输入命令，显示出自己的用户名，则说明已经成功连上github。
 
-{% highlight cmd %}
+```
+ ```cmd
 ssh -T git@github.com 
-{% endhighlight %}
+ ```
+```
 
 ![Markdown](http://p1.bqimg.com/572179/6866998d55e2d130.png)
 
 * 设置git的username和email
 
-{% highlight cmd %}
+```
+ ```cmd
 git config --global user.name "rynxiao"
 git config --global user.email "yuzhongzi91@sina.com"
-{% endhighlight %}
+ ```
+```
 
 ##### 2.3 上传自己的代码到github仓库
 
@@ -172,13 +185,15 @@ git config --global user.email "yuzhongzi91@sina.com"
 
 然后进入你本地的博客目录，例如是`myblog`，输入如下命令，下面以我的用户名为例：
 
-{% highlight cmd %}
+```
+ ```cmd
 git init                                                                // 初始化git仓库
 git add .                                                               // 添加文件夹中的所有内容到本地仓库
 git commit -m "first commit"                                            // 添加评论
 git remote add origin https://github.com/Rynxiao/Rynxiao.github.io.git  // 添加远程github仓库地址
 git push -u origin master                                               // 提交本地仓库代码到远程仓库
-{% endhighlight %}
+ ```
+```
 
 连上仓库之后会让你输入用户名和密码，然后就可以提交代码了。然后在浏览器中输入Rynxiao.github.io，就可以看到我们在本地中搭建的博客样子了
 
