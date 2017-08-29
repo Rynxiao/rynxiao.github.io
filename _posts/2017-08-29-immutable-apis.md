@@ -3,7 +3,6 @@ layout: post
 title:  "Immutable日常操作之深入API"
 subtitle: 'react系列'
 date:   2017-08-29
-excerpt: ""
 categories: 技术
 tag: [react, immutable, javascript]
 ---
