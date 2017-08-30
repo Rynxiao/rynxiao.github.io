@@ -1,9 +1,9 @@
 ---
 layout: post
 title:  "Immutable日常操作之深入API"
-subtitle: 'react系列'
 date:   2017-08-29
 categories: 技术
+cover: '/covers/20170830/immutable.png'
 tag: [react, immutable, javascript]
 ---
 
