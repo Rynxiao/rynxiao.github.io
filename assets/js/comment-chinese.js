@@ -114,7 +114,6 @@ $(function() {
 		} else {
 			var $element = $(word.path);
 			var text = $.trim($element.text());
-			console.log(text);
 			var wText = word[text];
 			if (text) {
 				$element.text(wText);
