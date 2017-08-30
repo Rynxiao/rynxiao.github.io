@@ -20,7 +20,7 @@ avatar: 'assets/img/timg.jpg'
 search: true
 
 # Night mode
-nightMode: true
+nightMode: false
 
 # Comments
 #disqus: false
