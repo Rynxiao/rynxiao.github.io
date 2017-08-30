@@ -107,7 +107,9 @@ $(function() {
 				var text = $.trim($element.text());
 				var wText = word[text];
 				var regExp = new RegExp(text, 'g');
-				$element.html(html.replace(regExp, wText));
+				if (html) {
+					$element.html(html.replace(regExp, wText));
+				}
 			}
 		} else {
 			var $element = $(word.path);
