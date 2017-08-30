@@ -18,7 +18,7 @@ description: 做一个放荡不羁的人
     <div class="article-list">
         <p>{{ site.posts.total_pages }}</p>
         {% for post in site.posts %}
-            {% if post.categories==notes %}
+            {% if post.notes %}
             <article class="article-item">
                 {% if post.cover %}
                 <div class="post-cover">
