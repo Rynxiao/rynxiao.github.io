@@ -16,7 +16,7 @@ description: 做一个放荡不羁的人
 
 <main class="g-container home-content">
     <div class="article-list">
-        <p>{{ site.posts }}</p>
+        <p>{{ site.posts.total_pages }}</p>
         {% for post in site.posts %}
             {% if post.categories!=技术 %}
             <article class="article-item">
