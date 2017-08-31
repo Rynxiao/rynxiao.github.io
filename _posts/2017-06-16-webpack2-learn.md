@@ -3,6 +3,7 @@ layout: post
 title:  "谈谈webpack2的一些事"
 date:   2017-06-16
 categories: 技术
+excerpt: '本文github仓库:https://github.com/Rynxiao/webpack2-learn从v1迁移到v21. 配置类型在webpack1的时候，主要是通过导出单个object来进行配置。例如下面的配置：// webpack1 导出方式 module.export = { entry : 'app.js', output : { */... */}, /*'
 tag: [webpack, javascript]
 comments: true
 ---

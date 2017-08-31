@@ -3,6 +3,7 @@ layout: post
 title:  "Immutable日常操作之深入API"
 date:   2017-08-29
 categories: 技术
+excerpt: '写在前面本文只是个人在熟悉Immutable.js的一些个人笔记，因此我只根据我自己的情况来熟悉API，所以很多API并没有被列举到，比如常规的push/map/filter/reduce等等操作，这些API我认为只要你自己稍微看一下官网的介绍都可以知道怎么用。本文所有的代码请参看本人的github地址https://github.com/Rynxiao/immutable-learn。一、什么是I'
 cover: '/covers/20170830/immutable.png'
 tag: [react, immutable, javascript]
 ---
