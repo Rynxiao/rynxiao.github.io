@@ -18,11 +18,11 @@ tag: [react, immutable, javascript]
 
 这个例子主要是写了同时渲染1000个房间，如果我添加一个房间或者修改一个房间，在`react`中不同的实现方式下`render`函数将会表现出什么样的结果？以及针对不同结果的一些思考和优化。大致的列表例子如下：生成1000个不同的房间盒子，颜色随机。
 
-![rooms](http://img.blog.csdn.net/20170831001135072?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveXV6aG9uZ3ppODE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![rooms](http://img.blog.csdn.net/20170831001135072)
 
 项目整体目录结构大致是这样的：
 
-![fileTree](http://img.blog.csdn.net/20170831001332403?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveXV6aG9uZ3ppODE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![fileTree](http://img.blog.csdn.net/20170831001332403)
 
 下面主要来看`ListDetail.js`中是如何写的：
 
@@ -125,15 +125,15 @@ render() {
 
 不出意外的发现了所有的子组件渲染的证据：
 
-![childrenAllRender](http://img.blog.csdn.net/20170831001431218?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveXV6aG9uZ3ppODE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![childrenAllRender](http://img.blog.csdn.net/20170831001431218)
 
 同时利用`chorme`的`Performance`检测的信息如下：
 
-![chromeTotalBefore](http://img.blog.csdn.net/20170831001613861?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveXV6aG9uZ3ppODE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![chromeTotalBefore](http://img.blog.csdn.net/20170831001613861)
 
 调用的方法堆栈如下：
 
-![chromeFunctionBefore](http://img.blog.csdn.net/20170831001712962?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveXV6aG9uZ3ppODE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![chromeFunctionBefore](http://img.blog.csdn.net/20170831001712962)
 
 渲染子组件的时间达到`764ms`，同时在堆栈中可以看到大量的`receiveComponent`和`updateChildren`方法的执行。那么有没有什么办法只渲染改变的部分呢？在[react官网](https://facebook.github.io/react/docs/optimizing-performance.html)性能监控这一小节中有提到一个方法，将子组件继承`React.PureComponent`可以局部有效防止渲染。加上之后的代码是这样的：
 
@@ -145,11 +145,11 @@ class RoomDetail extends React.PureComponent {
 
 所有的东西都没有变化，只是将`Component`换成了`PureComponent`。下面我们再来测试一下：
 
-![childrenOneRender](http://img.blog.csdn.net/20170831001826658?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveXV6aG9uZ3ppODE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![childrenOneRender](http://img.blog.csdn.net/20170831001826658)
 
 性能检测图如下：
 
-![chromeTotalAfter](http://img.blog.csdn.net/20170831001907290?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveXV6aG9uZ3ppODE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![chromeTotalAfter](http://img.blog.csdn.net/20170831001907290)
 
 效果出奇的好，果然只是渲染了一次，并且速度提升了10几倍之多。
 
@@ -443,7 +443,7 @@ shouldComponentUpdate(nextProps, nextState) {
 
 我在项目底下新建了一个项目目录`redux-src`，同时在项目中增加了热更新。新建了`webpack.config.redux.js`，专门用来处理新加的`redux`模块。具体代码可以上`github`上面去看。因此新的目录结构如下：
 
-![redux-tree](http://img.blog.csdn.net/20170901005842313?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveXV6aG9uZ3ppODE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![redux-tree](http://img.blog.csdn.net/20170901005842313)
 
 `webpack.config.redux.js`文件如下：
 
@@ -555,10 +555,10 @@ modifyRoom() {
 
 日志模式：
 
-![reduxDevToolsLog](http://img.blog.csdn.net/20170901005947188?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveXV6aG9uZ3ppODE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![reduxDevToolsLog](http://img.blog.csdn.net/20170901005947188)
 监控模式：
 
-![reduxDevToolsInspector](http://img.blog.csdn.net/20170901010010972?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveXV6aG9uZ3ppODE=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+![reduxDevToolsInspector](http://img.blog.csdn.net/20170901010010972)
 
 #### 总结
 
