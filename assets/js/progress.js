@@ -1,6 +1,6 @@
 ;(function() {
 	function getScrollHeight() {
-		return Math.max(document.body.scrollHeight, document.documentElement.scrollHeighth);
+		return Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
 	}
 
 	function getScrollTop() {
