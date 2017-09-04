@@ -35,7 +35,7 @@
 		// 添加事件
 		document.addEventListener('scroll', function() {
 			var top = getScrollTop();
-			var percent = Number(top / trueHeight).toFixed(2) + '%';
+			var percent = Number(top * 100 / trueHeight).toFixed(2) + '%';
 			ele.setAttribute('value', top);
 			ele.setAttribute('title', percent);
 			ele.textContent = percent;
