@@ -18,7 +18,7 @@
 	}
 
 	function getWindowHeight() {
-		return widow.innerHeight;
+		return window.innerHeight;
 	}
 
 	var ele = document.querySelector('#rynProgress');
