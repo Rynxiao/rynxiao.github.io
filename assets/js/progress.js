@@ -26,7 +26,7 @@
 	var scrollHeight = getScrollHeight();
 	var top = getScrollTop();
 
-	if (scrollHeight <= clientHeight) {
+	if (scrollHeight <= windowHeight) {
 		ele.style.display = 'none';
 	} else {
 		ele.setAttribute('max', height);
