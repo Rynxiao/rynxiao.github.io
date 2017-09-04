@@ -29,7 +29,7 @@
 	if (scrollHeight <= windowHeight) {
 		ele.style.display = 'none';
 	} else {
-		ele.setAttribute('max', height);
+		ele.setAttribute('max', scrollHeight);
 
 		// 添加事件
 		document.addEventListener('scroll', function() {
