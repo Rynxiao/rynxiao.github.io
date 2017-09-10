@@ -11,7 +11,7 @@ tag: [webapp, ios, android, bug]
 
 **Chrome**: 61.0.3163.73
 
-**Safari**: 10.0
+**Safari**: 10.0（IOS 10.3.3）
 
 **Github**: [webapp-bugs](https://github.com/Rynxiao/webapp-bugs)
 
