@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Webapp中的那些BUG"
+title:  "移动端Webapp中的那些Bug"
 date:   2017-09-10
 categories: 技术
 tag: [webapp, ios, android, bug]
