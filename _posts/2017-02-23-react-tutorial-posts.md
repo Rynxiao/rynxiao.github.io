@@ -3,6 +3,7 @@ layout: post
 title:  "react新手教程"
 date:   2017-02-23
 categories: 技术
+excerpt: 'react新手入门，适合初学者看一下。另外本人github中包含了所有的源码，麻烦在各位fork的同时，给小的赏一颗star，谢谢！'
 tag: [react, 框架学习]
 comments: true
 ---
