@@ -4,6 +4,7 @@ title:  "移动端Webapp中的那些Bug"
 date:   2017-09-10
 categories: 技术
 excerpt: '测试浏览器 Chrome: 61.0.3163.73 Safari: 10.0 Github: webapp-bugs 1. IOS overflow: scroll 全屏滚动出界 1.1 出现场景 滑动到最顶部(最底部)的时候，停下，然后继续向上滑动(向下滑动) 1.2 解决方案 手动设置滑到边界时的scrollTop（scrollFix）当快滑'
+cover: '/covers/20170910/bugs.jpeg'
 tag: [webapp, ios, android, bug]
 ---
 
