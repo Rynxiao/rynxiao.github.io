@@ -4,6 +4,7 @@ title:  "深入理解Redux之中间件(middleware)"
 date:   2017-08-05
 categories: 技术
 excerpt: '理解reduce函数 reduce() 方法接收一个函数作为累加器（accumulator），数组中的每个值（从左到右）开始缩减，最终为一个值。 arr.reduce([callback, initialValue])关于reduce的用法，这里不再做多述，可以去这里查看看如下例子：let arr = [1, 2, 3, 4, 5];// 10代表初始值，p代表每一次的累加值，在第一次为10 /'
+cover: '/covers/20170805/redux.jpeg'
 tag: [redux, javascript]
 ---
 

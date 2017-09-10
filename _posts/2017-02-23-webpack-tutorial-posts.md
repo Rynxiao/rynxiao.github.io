@@ -5,6 +5,7 @@ date:   2017-02-23
 categories: 技术
 excerpt: '1. 导语1.1 什么叫做webpack webpack is a module bundler. webpack takes modules with dependencies and generates static assets representing those modules. 简单的概括就是：webpack是一个模块打包工具，处理模块之间的依赖同时生成对应模块的静态资源。1'
 tag: [webpack, 前端工具]
+cover: '/covers/20170223/webpack.jpeg'
 comments: true
 ---
 

@@ -3,6 +3,7 @@ layout: post
 title:  "谈谈webpack2的一些事"
 date:   2017-06-16
 categories: 技术
+cover: '/covers/20170223/webpack2.jpeg'
 tag: [webpack, javascript]
 ---
 
