@@ -8,6 +8,8 @@ cover: '/covers/20170910/bugs.jpeg'
 tag: [webapp, ios, android, bug]
 ---
 
+# 持续更新...
+
 ## 测试浏览器
 
 **Chrome**: 61.0.3163.73
@@ -21,6 +23,8 @@ tag: [webapp, ios, android, bug]
 ### 1.1 出现场景
 
 滑动到最顶部(最底部)的时候，停下，然后继续向上滑动(向下滑动)
+
+![bounce](http://img.blog.csdn.net/20170911122935009)
 
 ### 1.2 解决方案
 
@@ -76,6 +80,7 @@ var ScrollFix = function(elem) {
     width: 100%;
 }
 ```
+![r-bounce](http://img.blog.csdn.net/20170911123303652)
 
 ## 2. IOS通过脚本使输入框聚焦，无法弹出键盘
 
@@ -100,6 +105,8 @@ setTimeout(() => {
 
 这种方式下：在`IOS`上输入框聚焦确没有办法弹出键盘
 
+![focus](http://img.blog.csdn.net/20170911123439404)
+
 ### 2.2 解决方案
 
 爬墙爬到这么一个[issue](https://github.com/jquery/jquery-mobile/issues/3016)，3楼`eddiemonge`老哥说到了，在`IOS`下除非用户手动触发了输入框的`focus`事件，才会触发键盘，至于设置定时器也是不管用的；**但是**，手动点击一个按钮，在按钮的操作中再来执行`focus`事件倒是管用的。他还给出了一个[http://jsbin.com/inunis/8/edit?html,js,output](http://jsbin.com/inunis/8/edit?html,js,output)
@@ -111,6 +118,7 @@ submitBtn.onclick = function(e) {
     inputEmail3.focus();
 }
 ```
+![r-focus](http://img.blog.csdn.net/20170911123515802)
 
 ## 3. IOS光标不跟随输入框移动
 
@@ -119,6 +127,8 @@ submitBtn.onclick = function(e) {
 我为什么会关注这个问题：那是因为我**（这里省略一万个草泥马）也遇到了这个问题呀，容我细细说来。
 
 我有一个登录页面，在聚焦之后需要往上弹一下，`android`上正常，然后`IOS`上还同时引出了一个`BUG`：输入框上去了，但是光标却在下面闪。怎么办呢？当然是靠想办法解决呀，后来我就想在输入框上贴一层蒙版，点击了之后消失，同时在点击操作中，等到动画结束之后再执行输入框的`focus`，行不行呢？好期待。。。
+
+![caret](http://img.blog.csdn.net/20170911123555077)
 
 `html`代码是这样的：
 
@@ -288,6 +298,8 @@ inputEmail3.addEventListener('focus', function() {
 
 **效果大体上实现了**，但是仍然有瑕疵。就是必须设置延迟`300ms`以上，不然，光标重绘不正常，而且光标有明显的移动过程。**所以如果童鞋们如果发现有什么更好的办法，还望不吝赐教。**
 
+![r-caret](http://img.blog.csdn.net/20170911123810012)
+
 另外，如果一个页面中有输入框，聚焦之后，滑动过程中在`IOS`上可能会出现不流畅的问题，其实可以这么做：监测页面的`touchmove`事件，如果当前页面存在着输入框被`active`，那么直接让其`blur`，保证滑动过程中没有输入框被聚焦。（不过以我的测试情况来看，在`chrome`和`safari`上滑动的时候输入框不再被激活，类似在`PC`端滑动的时候采用了蒙版或者`points-event: none;`的效果）
 
 ```javascript
@@ -317,6 +329,8 @@ content.addEventListener('touchmove', function() {
 ### 4.1 出现场景
 
 页面中有`fixed`头部，输入框，并且输入框靠下时，当输入框`focus`的时候，会将整个页面上移，导致头部被顶出去。[fixed position div freezes on page](https://stackoverflow.com/questions/10659891/fixed-position-div-freezes-on-page-ipad)
+
+![header](http://img.blog.csdn.net/20170911123858827)
 
 ### 4.2 解决方案
 
@@ -388,9 +402,9 @@ function scrolled() {
 
 tryfix();
 ```
+![r-header](http://img.blog.csdn.net/20170911123947032)
 
 另外如果页面缩放，也会引起头部定位不正常。详情可以看[这里](http://bradfrost.com/demo/fixed/index.html)，关于`anroid`上`fixed`的支持情况，可以看[这里](http://bradfrost.com/blog/mobile/fixed-position/)
-
 
 
 
