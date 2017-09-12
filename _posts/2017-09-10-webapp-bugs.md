@@ -406,5 +406,7 @@ tryfix();
 
 另外如果页面缩放，也会引起头部定位不正常。详情可以看[这里](http://bradfrost.com/demo/fixed/index.html)，关于`anroid`上`fixed`的支持情况，可以看[这里](http://bradfrost.com/blog/mobile/fixed-position/)
 
+<a class="jsbin-embed" href="https://jsbin.com/ganiqus/embed?html,js">JS Bin on jsbin.com</a><script src="https://static.jsbin.com/js/embed.min.js?4.0.4"></script>
+
 
 
