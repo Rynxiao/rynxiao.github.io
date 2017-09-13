@@ -38,8 +38,9 @@
 			var percent = Number(top * 100 / trueHeight).toFixed(2) + '%';
 			// ele.setAttribute('value', top);
 			ele.setAttribute('title', percent);
-			ele.setAttribute('width', percent);
 			// ele.textContent = percent;
+			 
+			ele.style.width = percent;
 		});
 	}
 })();
