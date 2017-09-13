@@ -30,15 +30,16 @@
 	if (scrollHeight <= windowHeight) {
 		ele.style.display = 'none';
 	} else {
-		ele.setAttribute('max', trueHeight);
+		// ele.setAttribute('max', trueHeight);
 
 		// 添加事件
 		document.addEventListener('scroll', function() {
 			var top = getScrollTop();
 			var percent = Number(top * 100 / trueHeight).toFixed(2) + '%';
-			ele.setAttribute('value', top);
+			// ele.setAttribute('value', top);
 			ele.setAttribute('title', percent);
-			ele.textContent = percent;
+			ele.setAttribute('width', percent);
+			// ele.textContent = percent;
 		});
 	}
 })();
