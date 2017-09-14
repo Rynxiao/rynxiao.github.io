@@ -26,7 +26,8 @@ nightMode: false
 # Comments
 #disqus: false
 #disqus_url: 'https://liaokeyu.disqus.com/embed.js'
-intensedebate: true
+#intensedebate: true
+livere: true
 
 # Share
 social-share: true
