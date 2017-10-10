@@ -15,6 +15,8 @@ tag: [webapp, picker]
 
 代码看这里：[github](https://github.com/Rynxiao/mint-ui-learn)
 
+![picker](http://img.blog.csdn.net/20171010180605685)
+
 ## 1. 核心解析
 
 ### 1.1 基本HTML结构

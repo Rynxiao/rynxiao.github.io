@@ -13,7 +13,9 @@ tag: [webapp, swiper]
 
 ![swiper](http://img.blog.csdn.net/20171009125115356)
 
-代码在这里：[戳我](https://jsbin.com/koriguy/2/edit?js)
+[移动端效果之Picker](http://rynxiao.com/%E6%8A%80%E6%9C%AF/2017/10/10/webapp-picker.html)
+
+代码在这里：[戳我](https://jsbin.com/koriguy/2/edit?js) or [github](https://github.com/Rynxiao/mint-ui-learn)
 
 ## 1. 说明
 
