@@ -13,6 +13,8 @@ tag: [webapp, picker]
 
 [移动端效果之Swiper](http://rynxiao.com/%E6%8A%80%E6%9C%AF/2017/10/09/webapp-swiper.html)
 
+[移动端效果之CellSwiper](http://rynxiao.com/%E6%8A%80%E6%9C%AF/2017/10/13/webapp-cellSwiper.html)
+
 代码看这里：[github](https://github.com/Rynxiao/mint-ui-learn)
 
 ![picker](http://img.blog.csdn.net/20171010180605685)
