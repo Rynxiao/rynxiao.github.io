@@ -17,6 +17,8 @@ tag: [webapp, swiper]
 
 [移动端效果之CellSwiper](http://rynxiao.com/%E6%8A%80%E6%9C%AF/2017/10/13/webapp-cellSwiper.html)
 
+[移动端效果之IndexList](http://rynxiao.com/%E6%8A%80%E6%9C%AF/2017/10/20/webapp-indexList.html)
+
 代码在这里：[戳我](https://jsbin.com/koriguy/2/edit?js) or [github](https://github.com/Rynxiao/mint-ui-learn)
 
 ## 1. 说明
