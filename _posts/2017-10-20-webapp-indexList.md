@@ -21,6 +21,8 @@ tag: [webapp, IndexList]
 
 [移动端效果之cellSwiper](http://rynxiao.com/%E6%8A%80%E6%9C%AF/2017/10/13/webapp-cellSwiper.html)
 
+[移动端效果之scrollList](http://rynxiao.com/%E6%8A%80%E6%9C%AF/2017/11/17/webapp-scrollList.html)
+
 ## 1. 核心解析
 
 总体来说的原理就是当点击或者滑动右边的索引条时，通过获取点击的索引值来使左边的内容滑动到相应的位置。其中怎样滑动到具体的位置，看下面分解：

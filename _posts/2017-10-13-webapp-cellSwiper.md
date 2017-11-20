@@ -21,6 +21,8 @@ tag: [webapp, cellSwiper]
 
 [移动端效果之IndexList](http://rynxiao.com/%E6%8A%80%E6%9C%AF/2017/10/20/webapp-indexList.html)
 
+[移动端效果之scrollList](http://rynxiao.com/%E6%8A%80%E6%9C%AF/2017/11/17/webapp-scrollList.html)
+
 ## 1. 核心解析
 
 ### 1.1 HTML结构
