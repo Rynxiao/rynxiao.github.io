@@ -3,6 +3,7 @@ layout: post
 title:  "记一次react脚手架的改造经历"
 date:   2017-12-01
 categories: 技术
+cover: '/covers/20171201/boilerplate.gif'
 excerpt: '公司突然组织需要重新搭建一个基于node的论坛系统，前端采用react，上网找了一些脚手架，或多或少不能满足自己的需求，最终在基于YeoMan的react脚手架generator-react-webpack上搭建改造，这里作为记录。代码在这里：github另外推荐地址：react-starter-kit简单文件夹结构├── README.md # 项目RE'
 tag: [react, 脚手架, redux]
 ---
