@@ -66,6 +66,8 @@ tag: [react, 脚手架, redux]
 -   调试工具(react devTools)
 -   增加文件分类(images/fonts/media)
 -   生产配置增加文件hash,公共库拆分
+-   添加异步middleware，统一处理全局状态
+-   改造Actions/Reducers
 
 ## 改造过程
 
