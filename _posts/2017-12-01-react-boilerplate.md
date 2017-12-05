@@ -465,6 +465,163 @@ src/images/
 
 [prop-types](https://github.com/facebook/prop-types)
 
+### 改造Actions
+
+在`actions`文件夹中，新增了便捷创建`action`的方法，变化为：
+
+```javascript
+// actions/getItem.js
+// 之前在actions目录下会存在这个文件夹，现在已经融合成item.js
+// 之前可能是这样的：
+function action(parameter) {
+    return { type: ADD_ITEM, parameter };
+}
+
+// actions/items.js
+// 现在是这样的
+const getItems = createAction(GET_ITEMS);
+```
+
+### 增加异步Actions支持，并配置全局状态
+
+在`middlewares/apiMiddleware.js`中使用`axios`进行接口请求，支持`GET/POST`，另支持`jsonp`方式，只需要如下调用即可：
+
+```javascript
+// actions/items.js
+const getAsyncItem = params => {
+    return createAsyncAction(
+        GET_ASYNC_ITEM_REQUEST,
+        {
+            [CALL_API]: {
+                url: 'sug',
+                method: 'get',
+                type: 'jsonp',
+                success: GET_ASYNC_ITEM_SUCCESS,
+                params
+            }
+        }
+    );
+};
+
+// views/About.js
+this.props.actions.getAsyncItem({
+    code: 'utf-8',
+    q: '图书'
+});
+```
+
+接口调用会在`store`中添加数据，之后可以这样调用：
+
+```javascript
+// views/About.js
+const { items } = this.props;
+const { books } = items.get('books');
+```
+
+添加异步中间件，更新全局状态：
+
+```javascript
+// middlewares/apiMiddleware.js
+const apiMiddleware = ({ getStore }) => next => action => {
+    // ...
+    axios(url, p).then(response => {
+        if (response.status >= 200 && response.status < 300) {
+            return response;
+        }
+        // ...
+        return throwError(response, response.statusText);
+    })
+    .then(res => {
+        // ...
+    })
+    .then(data => {
+        next(createAction(UPDATE_G_PROPERTY, LOAD_STATUS.COMPLETE)());
+        return next(createAction(success, data)());
+    });
+    // ...
+}
+
+// 更新全局状态
+next(createAction(UPDATE_G_PROPERTY, LOAD_STATUS.STATUS_ERROR)());
+
+// reducers/g.js
+/* eslint quote-props: 0 */
+
+import { fromJS } from 'immutable';
+import { handleActions } from 'redux-actions';
+import { LOAD_STATUS } from '../middlewares/const';
+import { UPDATE_G_PROPERTY } from '../actions/const';
+
+const initialState = fromJS({
+    loadStatus: LOAD_STATUS.REQUEST
+});
+
+const gReducers = handleActions({
+    /**
+     * 改变全局加载状态
+     * @param state
+     * @returns {*}
+     */
+    [UPDATE_G_PROPERTY](state, action) {
+        return state.set('loadStatus', action.payload);
+    }
+}, initialState);
+
+module.exports = gReducers;
+```
+
+全局状态现在只有接口`loadStatus`的状态，如果需要其他的，可以自行添加。
+
+### 改造reducers的处理
+
+引入了`redux-actions`库，其中对`reducers`的处理进行了很好的封装。而不是单调的使用`switch/case`来进行匹配，中间运用到了扁平化`reducers`以及我之前在`深入redux中间件`一文中的`reduce`函数。如果有兴趣，可以自行去看`redux-actions`的源码。
+
+```javascript
+// reducers/g.js
+// 之前可能是这样的
+const gReducers = (state = initialState, action) {
+    case UPDATE_G_PROPERTY: 
+        return state.set('loadStatus', action.payload);
+    default:
+        return state;
+}
+
+// 改造之后是这样的
+const gReducers = handleActions({
+    [UPDATE_G_PROPERTY](state, action) {
+        return state.set('loadStatus', action.payload);
+    }
+}, initialState);
+```
+
+### 记录自行发起的日志
+
+主要是调整了`stores/index.js`中的日志中间件的位置，具体如下：
+
+```javascript
+// 之前是这样的
+middlewares.unshift(loggerMiddleware);
+
+// after
+middlewares.push(loggerMiddleware);
+```
+
+这样调整只要是在`console`控制台中的日志打印，如果是使用正常的`actions`发起的是可以正常记录的，但是类似如此的代码是记录不到的：
+
+```javascript
+dispatch(action)
+```
+
+因为`middlewares`其实是层层嵌套的，因此`action`也会层层往下面传，大致的图是这样的：
+
+```javascript
+middleware1 -> middleware2 -> ... -> middleware(n) -> action -> middleware(n) -> ... -> middleware2 -> middleware1
+```
+
+你可以点击`我的图书`，将会得到这样的记录：
+
+![createLogger](http://oyo3prim6.bkt.clouddn.com/react-boilerplate/createLogger2.png)
+
 ## 遇到的一些坑
 
 ### 热加载模板不起作用
