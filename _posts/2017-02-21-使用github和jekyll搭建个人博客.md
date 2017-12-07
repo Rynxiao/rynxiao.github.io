@@ -35,7 +35,7 @@ D:\develop\DevKit> ruby dk.rb install
 
 可以使用`gem -v` 和 `ruby -v`来确认是否已经安装成功
 
-![Markdown](http://p1.bpimg.com/572179/509e513d9975bf36.png)
+![ruby+Devkit](http://p0kjxkn2a.bkt.clouddn.com/ruby+Devkit.png)
 
 #### 1.2 更改gem sources
 
@@ -47,7 +47,7 @@ gem sources -u 更新缓存
 gem sources 查看替换后的源
 ```
 
-![Markdown](http://p1.bpimg.com/572179/d6344eefc5dd1f10.png)
+![gemsources](http://p0kjxkn2a.bkt.clouddn.com/gemsources.png)
 
 看到更新之后的源被替换成了`http://gems.ruby-china.org/`，没错，就是`http`，我试了用`https`一直是不成功的。
 
@@ -63,7 +63,7 @@ gem install jekyll
 
 > 这里稍微强调一下，这个版本和之前的2.x. x版本有些许不一样，可能在后面_config.yml的写法上可能有差异，不过没关系，这并不影响我继续前进
 
-![Markdown](http://p1.bqimg.com/572179/fdf98aa24a27850f.png)
+![jekyllversion](http://p0kjxkn2a.bkt.clouddn.com/jekyllversion.png)
 
 #### 1.4 创建博客
 
@@ -81,7 +81,7 @@ jekyll server
 
 * 端口占用
 
-![Markdown](http://p1.bqimg.com/572179/7216ad804c56adb7.png)
+![port](http://p0kjxkn2a.bkt.clouddn.com/port.png)
 
 看到jekyll启动服务的4000端口已经被占用，我们需要找到占用的程序，然后干掉它。
 
@@ -96,11 +96,11 @@ tasklist /svc /FI "PID eq 14325"
 
 如下图，正常启动如下：
 
-![Markdown](http://p1.bpimg.com/572179/f2d176e04576a60b.png)
+![jekyllserver](http://p0kjxkn2a.bkt.clouddn.com/jekyllserver.png)
 
 在浏览器中输入`127.0.0.1:4000`就可以看到我们的博客模样：
 
-![Markdown](http://p1.bpimg.com/572179/6f8cece1235e03ea.png)
+![blog](http://p0kjxkn2a.bkt.clouddn.com/blog.png)
 
 #### 1.6 后话
 
@@ -154,7 +154,7 @@ ssh-keygen -t rsa -C "yuzhongzi91@sina.com" //这里以我的邮箱为例子，�
 ssh -T git@github.com 
 ```
 
-![Markdown](http://p1.bqimg.com/572179/6866998d55e2d130.png)
+![ssh](http://p0kjxkn2a.bkt.clouddn.com/ssh.png)
 
 * 设置git的username和email
 

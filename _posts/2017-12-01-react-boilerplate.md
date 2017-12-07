@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "记一次react脚手架的改造经历"
+title:  "react脚手架改造(react/react-router/redux/eslint/karam/immutable/es6/webpack/Redux DevTools)"
 date:   2017-12-01
 categories: 技术
 cover: '/covers/20171201/boilerplate.gif'
