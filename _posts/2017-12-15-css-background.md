@@ -3,6 +3,7 @@ layout: post
 title:  "深入常用CSS声明(一) —— Background"
 date:   2017-12-15
 categories: 技术
+cover: '/covers/20171215/b-attachment.png'
 excerpt: '一直对一些自己常用的 声明掌握得不是很全，只知道常用的一些属性和值，但是对于其他的用法确实一知半解，这篇文章旨在扫盲，先不说有多深的理解，至少做到能够看到这些声明的属性和值的时候做到不陌生。 这里后续还会增加更多自己在工作和学习中的一些 声明，供自己查阅，也提供给大家看看。 "github" bac'
 tag: [css, css声明, background]
 ---
