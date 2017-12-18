@@ -15,9 +15,9 @@ comments: true
 
 ## JSX语法
 
-{% highlight javascript %}
+```javascript
 const element = <h1>Hello, world!</h1>;
-{% endhighlight %}
+```
 
 > This funny tag syntax is neither a string nor HTML.
 >
@@ -29,7 +29,7 @@ JSX produces React "elements".
 
 意思就是`jsx`语句既不是一个字符串，同时也不是`HTML`，它是`javascript`的扩展。没错，它是一个js文件，只是可以在js文件中直接写html标签，不用加任何标签。例如：
 
-{% highlight javascript %}
+```javascript
 var names = ['Alice', 'Emily', 'Kate'];
 
 ReactDOM.render(
@@ -42,7 +42,7 @@ ReactDOM.render(
   </div>,
   document.getElementById('root')
 );
-{% endhighlight %}
+```
 
 ------
 
@@ -87,7 +87,7 @@ ReactDOM.render(
         document.getElementById('root')
     );
 </script>
-{% endhighlight %}
+```
 
 * 使用`[babel]`提前编译
 
@@ -97,7 +97,7 @@ ReactDOM.render(
 
 注意： `babel` 6.0 之前的编译需要全局安装 `babel`， 而高于 6.0 版本的需要全局安装`babel-cli`，具体例子如下：
 
-{% highlight javascript %}
+```javascript
 // With Babel lower than 6.0
 
 npm install -g babel
@@ -110,14 +110,14 @@ npm install -g babel-cli
 cd basic-jsx-precompile/
 npm install babel-preset-react
 babel example.js --presets react --out-dir=build
-{% endhighlight %}
+```
 
 * 使用`[webpack]`或者`[Browserify]`之类的编译工具编译（`[Browserify]`没有研究过，下面主要介绍一下简单的`[webpack]`配置，可以参看之前的文档[webpack](http://com)）
 
 --------
 
 使用`[webpack]`需要配置`[webpack.config.js]`文件，具体如下：
-{% highlight javascript %}
+```javascript
 module.exports = {
     entry : {
         app : ['webpack.js']
@@ -135,7 +135,7 @@ module.exports = {
         ]
     }
 };
-{% endhighlight %}
+```
 
 生成的编译文件为`[app.bundle.js]`，可以直接在`[html]`文件中引入
 
@@ -145,7 +145,7 @@ module.exports = {
 
 react中可以直接渲染数组，数组元素可以是简单的字符串，也可以是jsx语法中的元素定义，同时还可以使用`Array.prototype.map`来遍历数组，代码如下：
 
-{% highlight javascript %}
+```javascript
 React.createClass({
     render() {
 
@@ -170,13 +170,13 @@ React.createClass({
         );
     }
 });
-{% endhighlight %}
+```
 
 ![array](http://p1.bpimg.com/572179/476645bc71f71389.png)
 
 对象使用`.`来使用，如：
 
-{% highlight javascript %}
+```javascript
 let obj = {name : 'Ryn', 'message' : 'hello'};
 
 return (
@@ -184,13 +184,13 @@ return (
         My name is {obj.name}, and I say {obj.message}!
     </div>
 );
-{% endhighlight %}
+```
 
 ## this.props
 
 `[this.props]`中的属性对应从组件传过来的属性，例如`<Hello sub="world" />`，那么在`Hello`组件中就可以使用`this.props.sub`来获取这个值。例如：
 
-{% highlight javascript %}
+```javascript
 /**
  * 调用方式
  * <PropsExample name="ryn" message="hello" />
@@ -209,13 +209,13 @@ export default React.createClass({
         );
     }
 });
-{% endhighlight %}
+```
 
 **注意特殊的**：**`[this.props.children]`,它表示组件的子节点**
 
 但是`[this.props.children]`可能会有三种类型，当组件下没有子节点的时候，它的值类型是`undefined`，有一个子节点时，它的类型是`Object`，当有超过两个子节点时，它的类型是`Array`，例如：
 
-{% highlight javascript %}
+```javascript
 /**
  * 调用方式
  * <NodeList>
@@ -243,33 +243,33 @@ export default React.createClass({
         );
     }
 });
-{% endhighlight %}
+```
 
 如下调用时：
 
-{% highlight javascript %}
+```javascript
 <NodeList />
-{% endhighlight %}
+```
 截图：
 
 ![none-child](http://p1.bpimg.com/572179/999cc809e3b0fd2b.png)
 
-{% highlight javascript %}
+```javascript
 <NodeList>
     <span>I'm a NodeList Component's child.</span>
 </NodeList>
-{% endhighlight %}
+```
 
 截图：
 
 ![one-child](http://p1.bpimg.com/572179/f20486e093cbd88e.png)
 
-{% highlight javascript %}
+```javascript
 <NodeList>
     <span>I'm a NodeList Component's child.</span>
     <span>I'm a NodeList Component's child.</span>
 </NodeList>
-{% endhighlight %}
+```
 
 截图：
 
@@ -283,7 +283,7 @@ export default React.createClass({
 
 更多的类型校验请参考官网：[https://facebook.github.io/react/docs/typechecking-with-proptypes.html](https://facebook.github.io/react/docs/typechecking-with-proptypes.html)
 
-{% highlight javascript %}
+```javascript
 /**
  * 调用方式
  * <PropsTypesExample name="ryn" age="12" />
@@ -306,7 +306,7 @@ export default React.createClass({
         );
     }
 });
-{% endhighlight %}
+```
 
 会得到一个警告，如下：
 
@@ -314,7 +314,7 @@ export default React.createClass({
 
 另外，还有一个`getDefaultProps`钩子函数，用来设置组件的默认`【props】`，注意，这个钩子方法当多次被调用的时候，只会被执行一次。例如：
 
-{% highlight javascript %}
+```javascript
 /**
  * 调用方式
  * <DefaultPropsExample />
@@ -353,7 +353,7 @@ ReactDOM.render(
 );
 
 // 控制台只会出现一次打印结果，如下
-{% endhighlight %}
+```
 
 ![execute-once](http://p1.bpimg.com/572179/34479a6787bb0939.png)
 
@@ -361,7 +361,7 @@ ReactDOM.render(
 
 可以使用`[this.refs.xxx]`来获取真实的DOM节点，或者使用`ReactDOM.findDOMNode(this.refs.xxx)`，例如：
 
-{% highlight javascript %}
+```javascript
 /**
  * 调用方式
  * <RefsExample />
@@ -388,7 +388,7 @@ export default React.createClass({
         );
     }
 });
-{% endhighlight %}
+```
 
 DOM节点打印如下：
 
@@ -400,19 +400,19 @@ DOM节点打印如下：
 
 React中的事件传参，如果没有传参，只需要这样调用：
 
-{% highlight javascript %}
+```javascript
 <p className="hello" onClick={this.handleClick}>hello world!</p>
-{% endhighlight %}
+```
 
 如果需要传参，则需要绑定`this`，如果没有绑定，则会变成直接调用函数了。例如：
 
-{% highlight javascript %}
+```javascript
 <p className="hello" onClick={this.handleClick.bind(this, 1)}>hello world!</p>
-{% endhighlight %}
+```
 
 接收函数，没有传参时，默认第一个参数是`event`事件对象，如果传参，则最后一个参数是事件对象，例如：
 
-{% highlight javascript %}
+```javascript
 /**
  * 调用方式
  * <EventExample />
@@ -437,13 +437,13 @@ export default React.createClass({
         );
     }
 });
-{% endhighlight %}
+```
 
 ## state(组件的状态)
 
 `state`表示组件的状态，当一个状态发生变化时，会重新触发`render`函数。注意，请将`state`和`props`区分开，比较好的理解就是，`props`只是表示组件的属性，不是可变的，但是一个组件的状态是可以变化的，这时候就要用到`state`。例如如下的例子，会在每一秒改变元素的颜色：
 
-{% highlight javascript %}
+```javascript
 /**
  * 调用方式
  * <StateExample />
@@ -490,7 +490,7 @@ export default React.createClass({
         );
     }
 });
-{% endhighlight %}
+```
 
 ## 表单
 
@@ -502,7 +502,7 @@ React中的表单分为**受限**组件与**不受限**组件，受限组件受�
 
 下面是一个例子：
 
-{% highlight javascript %}
+```javascript
 /**
  * 调用方式
  * <FormExample />
@@ -548,7 +548,7 @@ export default React.createClass({
         );
     }
 });
-{% endhighlight %}
+```
 
 ## react生命周期
 
@@ -573,7 +573,7 @@ react在不同的生命周期会触发不同的钩子函数
 ### 运行中阶段
 
 `componentWillReceiveProps()` 组件接收到属性的时候调用，当组件的属性发生变化的时候，并将其作为参数`nextProps`使用，此时可以更改组件`props`及`state`
-{% highlight javascript %}
+```javascript
 componentWillReceiveProps: function(nextProps) {
     if (nextProps.bool) {
         this.setState({
@@ -581,7 +581,7 @@ componentWillReceiveProps: function(nextProps) {
         });
     }
 }
-{% endhighlight %}
+```
 
 `shouldComponentUpdate()` 当组件接收到新的属性或者新的状态发生变化的时候执行(在某些情况下当属性或者状态不发生变化的时候可以手动`return false`)
 
@@ -607,27 +607,27 @@ componentWillReceiveProps: function(nextProps) {
 
 * class -> className
 
-{% highlight javascript %}
+```javascript
 <p className="title">hello</p>
 // but not
 <p class="title">hello</p>
-{% endhighlight %}
+```
 
 * for -> htmlFor
 
-{% highlight javascript %}
+```javascript
 <label htmlFor="name">name:</label>
 // but not
 <label for="name">name:</label>
-{% endhighlight %}
+```
 
 * style
 
-{% highlight javascript %}
+```javascript
 <div style={{padding:'10px',margin:'10px'}}></div>
 // but not
 <div style="padding:10px;margin:10px;"></div>
-{% endhighlight %}
+```
 
 更多的不同点可以自己去官网了解 [https://facebook.github.io/react/docs/dom-elements.html](https://facebook.github.io/react/docs/dom-elements.html)
 

@@ -31,20 +31,20 @@ github仓库 [https://github.com/Rynxiao/webpack-test](https://github.com/Rynxia
 ## 2. webpack安装
 
 - 全局安装(供全局调用：如`webpack --config webpack.config.js`)
-{% highlight javascript %}
+```javascript
 npm install -g webpack
-{% endhighlight %}
+```
 - 项目安装
-{% highlight javascript %}
+```javascript
 npm install webpack
 
 // 处理类似如下调用
 import webpack from "webpack";
 var webpack = require("webpack");
-{% endhighlight %}
+```
 
 建议安装淘宝的npm镜像，这样下载npm包会快上很多，具体做法：
-{% highlight javascript %}
+```javascript
 // 方式一
 npm install xx --registry=https://registry.npm.taobao.org/
 
@@ -55,11 +55,11 @@ cnpm install xx
 // 方式三
 // 在用户主目录下，找到.npmrc文件，加上下面这段配置
 registry=https://registry.npm.taobao.org/
-{% endhighlight %}
+```
 
 ## 3. webpack的基本配置
 创建配置文件(`webpack.config.js`，执行webpack命令的时候，默认会执行这个文件)
-{% highlight javascript %}
+```javascript
 module.export = {
 	entry : 'app.js',
 	output : {
@@ -77,7 +77,7 @@ module.export = {
 		]
 	}
 };
-{% endhighlight %}
+```
 说明一： `webpack.config.js`默认输出一个`webpack`的配置文件，与`CLI`方式调用相同，只是更加简便
 说明二： 执行`webpack`命令即可以运行配置，先决条件，全局安装`webpack`，项目安装各模块`loader`
 说明三： `entry`对应需要打包的入口`js`文件，`output`对应输出的目录以及文件名，`module`中的`loaders`对应解析各个模块时需要的加载器
@@ -85,10 +85,10 @@ module.export = {
 **一个简单的例子**
 
 `basic/app.js`
-{% highlight javascript %}
+```javascript
 require('./app.css');
 document.getElementById('container').textContent = 'APP';
-{% endhighlight %}
+```
 
 ---------
 `basic/app.css`
@@ -108,11 +108,11 @@ document.getElementById('container').textContent = 'APP';
     font-size: 40px;
     font-weight: bold;
 }
-{% endhighlight %}
+```
 
 --------
 `basic/webpack.config.js`
-{% highlight javascript %}
+```javascript
 /**
  * webpack打包配置文件
  */
@@ -132,7 +132,7 @@ module.exports = {
         ]
     }
 };
-{% endhighlight %}
+```
 
 -----------
 `basic/index.html`
@@ -148,7 +148,7 @@ module.exports = {
     <script src="./assets/main.bundle.js"></script>
 </body>
 </html>
-{% endhighlight %}
+```
 
 在`basic`文件夹执行`webpack`，打包信息如下
 
@@ -164,12 +164,12 @@ module.exports = {
  **4.1.1`webpack`的多入口配置**
 
 上例的简单配置中，只有一个入口文件，那么如果对应于一个页面需要加载多个打包文件或者多个页面想同时引入对应的打包文件的时候，应该怎么做？
-{% highlight javascript %}
+```javascript
 entry : {
 	app1 : './app1.js',
 	app2 : './app2.js'
 }
-{% endhighlight %}
+```
 在`multi-entry`文件夹执行`webpack`，打包信息如下
 
 ![这里写图片描述](http://img.blog.csdn.net/20160723122445540)
@@ -180,12 +180,12 @@ entry : {
 ### 4.2 output相关
 ------------
 **4.2.1 `output.publicPath`**
-{% highlight javascript %}
+```javascript
 output: {
     path: "/home/proj/cdn/assets/[hash]",
     publicPath: "http://cdn.example.com/assets/[hash]/"
 }
-{% endhighlight %}
+```
 
 引用一段官网的话：
 > The publicPath specifies the public URL address of the output files when referenced in a browser. For loaders that embed `<script>` or `<link>` tags or reference assets like images, publicPath is used as the href or url() to the file when it’s different then their location on disk (as specified by path). 
@@ -193,7 +193,7 @@ output: {
 大致意思就是：`publicPath`指定了你在浏览器中用什么地址来引用你的静态文件，它会包括你的图片、脚本以及样式加载的地址，一般用于线上发布以及CDN部署的时候使用。
 
 比如有下面一段配置：
-{% highlight javascript %}
+```javascript
 var path = require('path');
 var HtmlWebpackPlugin =  require('html-webpack-plugin');
 
@@ -218,7 +218,7 @@ module.exports = {
         })
     ]
 };
-{% endhighlight %}
+```
 其中我将`publicPath`设置成了`http://rynxiao.com/assets/`，其中设置到了插件的一些东西，这点下面会讲到，总之这个插件的作用是生成了上线发布时候的首页文件，其中`script`中引用的路径将会被替换。如下图：
 
 ![这里写图片描述](http://img.blog.csdn.net/20160723132645470)
@@ -237,15 +237,15 @@ module.exports = {
 [chunkhash] 会被块文件hash替换.
 
 例如，我在output中如下设置：
-{% highlight javascript %}
+```javascript
 output : {
     path : './assets/',
     filename : '[name].[hash].bundle.js',
     chunkFilename: "chunk/[chunkhash].chunk.js"
 }
-{% endhighlight %}
+```
 同时我修改了一下`basic/app.js`中的文件
-{% highlight javascript %}
+```javascript
 require('./app.css');
 
 require.ensure('./main.js', function(require) {
@@ -253,7 +253,7 @@ require.ensure('./main.js', function(require) {
 });
 
 document.getElementById("container").textContent = "APP";
-{% endhighlight %}
+```
 其中对应的`chunk.js`就会生成带有`chunkhash`的`chunk`文件，如下图：
 
 ![这里写图片描述](http://img.blog.csdn.net/20160723135002158)
@@ -264,18 +264,18 @@ document.getElementById("container").textContent = "APP";
 **4.2.3 `output.library`**
 
 这个配置作为库发布的时候会用到，配置的名字即为库的名字，通常可以搭配`libraryTarget`进行使用。例如我给`basic/webpack.config.js`加上这样的配置：
-{% highlight javascript %}
+```javascript
 output : {
 	// ...
 	library : 'testLibrary'
 	// ...
 }
-{% endhighlight %}
+```
 那么实际上生成出来的`main.bundle.js`中会默认带上以下代码：
-{% highlight javascript %}
+```javascript
 var testLibrary = (//....以前的打包生成的代码);
 // 这样在直接引入这个库的时候，就可以直接使用`testLibrary`这个变量
-{% endhighlight %}
+```
 ![这里写图片描述](http://img.blog.csdn.net/20160723142057926)
 
 ------------
@@ -313,9 +313,9 @@ var testLibrary = (//....以前的打包生成的代码);
 //    If configuration has some transforms bound to the file, they will not be applied.
 
 代表加载器的流式调用，例如：
-{% highlight javascript %}
+```javascript
 { test : /\.css|\.less$/, loader : 'style!css!less' }
-{% endhighlight %}
+```
 就代表了先使用less加载器来解释less文件，然后使用css加载器来解析less解析后的文件，依次类推
 
 --------
@@ -323,13 +323,13 @@ var testLibrary = (//....以前的打包生成的代码);
 `include`表示必须要包含的文件或者目录，而`exclude`的表示需要排除的目录
 
 比如我们在配置中一般要排除`node_modules`目录，就可以这样写
-{% highlight javascript %}
+```javascript
 { 
 	test : /\.js$/, 
 	loader : 'babel',
 	exclude : nodeModuleDir 
 }
-{% endhighlight %}
+```
 官方建议：优先采用include，并且include最好是文件目录
 
 ---------
@@ -337,15 +337,15 @@ var testLibrary = (//....以前的打包生成的代码);
 使用了`noParse`的模块将不会被`loaders`解析，所以当我们使用的库如果太大，并且其中不包含`require`、`define`或者类似的关键字的时候(因为这些模块加载并不会被解析，所以就会报错)，我们就可以使用这项配置来提升性能。
 
 例如下面的例子：在`basic/`目录中新增`no-parse.js`
-{% highlight javascript %}
+```javascript
 var cheerio = require('cheerio');
 
 module.exports = function() {
     console.log(cheerio);
 }
-{% endhighlight %}
+```
 `webpack.config.js`中新增如下配置：
-{% highlight javascript %}
+```javascript
 module : {
     loaders : [
         { test : /\.js$/, loader : 'babel' },
@@ -353,7 +353,7 @@ module : {
     ],
     noParse : /no-parse.js/
 }
-{% endhighlight %}
+```
 当执行打包后，在浏览器中打开`index.html`时，就会报错`require is not defined`
 
 ![这里写图片描述](http://img.blog.csdn.net/20160723152744481)
@@ -363,11 +363,11 @@ module : {
 #### 4.4.1 `resolve.alias`
 为模块设置别名，能够让开发者指定一些模块的引用路径。对一些经常要被import或者require的库，如react,我们最好可以直接指定它们的位置，这样webpack可以省下不少搜索硬盘的时间。
 例如我们修改`basic/app.js`中的相关内容：
-{% highlight javascript %}
+```javascript
 var moment = require("moment");
 
 document.getElementById("container").textContent = moment().locale('zh-cn').format('LLLL');
-{% endhighlight %}
+```
 加载一个操作时间的类库，让它显示当前的时间。使用`webpack --profile --colors --display-modules`执行配置文件，得到如下结果：
 
 ![这里写图片描述](http://img.blog.csdn.net/20160723162934423)
@@ -375,13 +375,13 @@ document.getElementById("container").textContent = moment().locale('zh-cn').form
 其中会发现，打包总共生成了104个隐藏文件，其中一半的时间都在处理关于`moment`类库相关的事情，比如寻找`moment`依赖的一些类库等等。
 
 在`basic/webpack.config.js`加入如下配置，然后执行配置文件
-{% highlight javascript %}
+```javascript
 resolve : {
     alias : {
         moment : 'moment/min/moment-with-locales.min.js'
     }
 }
-{% endhighlight %}
+```
 ![这里写图片描述](http://img.blog.csdn.net/20160723163439259)
 
 有没有发现打包的时间已经被大大缩短，并且也只产生了两个隐藏文件。
@@ -389,9 +389,9 @@ resolve : {
 **配合`module.noParse`使用**
 
 `module.noParse`参看上面的解释
-{% highlight javascript %}
+```javascript
 noParse: [/moment-with-locales/]
-{% endhighlight %}
+```
 执行打包后，效果如下：
 
 ![这里写图片描述](http://img.blog.csdn.net/20160723163819826)
@@ -402,15 +402,15 @@ noParse: [/moment-with-locales/]
 
 `externals`参看下面的解释
 >Webpack 是如此的强大，用其打包的脚本可以运行在多种环境下，Web 环境只是其默认的一种，也是最常用的一种。考虑到 Web 上有很多的公用 CDN 服务，那么 怎么将 Webpack 和公用的 CDN 结合使用呢？方法是使用 externals 声明一个外部依赖。
-{% highlight javascript %}
+```javascript
 externals: {
     moment: true
 }
-{% endhighlight %}
+```
 当然了 HTML 代码里需要加上一行
-{% highlight javascript %}
+```javascript
 <script src="//apps.bdimg.com/libs/moment/2.8.3/moment-with-locales.min.js"></script>
-{% endhighlight %}
+```
 执行打包后，效果如下：
 
 ![这里写图片描述](http://img.blog.csdn.net/20160723170548257)
@@ -418,28 +418,28 @@ externals: {
 ---------
 #### 4.4.2 `resolve.extensions`
 
-{% highlight javascript %}
+```javascript
 resolve : {
     extensions: ["", ".webpack.js", ".web.js", ".js", ".less"]
 }
-{% endhighlight %}
+```
 这项配置的作用是自动加上文件的扩展名，比如你有如下代码：
-{% highlight javascript %}
+```javascript
 require('style.less');
 
 var app = require('./app.js');
-{% endhighlight %}
+```
 那么加上这项配置之后，你可以写成：
-{% highlight javascript %}
+```javascript
 require('style');
 
 var app = require('./app');
-{% endhighlight %}
+```
 ------------
 ### 4.5 externals
 
 当我们想在项目中require一些其他的类库或者API，而又不想让这些类库的源码被构建到运行时文件中，这在实际开发中很有必要。此时我们就可以通过配置externals参数来解决这个问题：
-{% highlight javascript %}
+```javascript
 //webpack.config.js
 module.exports = {
     externals: {
@@ -447,30 +447,30 @@ module.exports = {
     },
     //...
 }
-{% endhighlight %}
+```
 externals对象的key是给require时用的，比如require('react')，对象的value表示的是如何在global（即window）中访问到该对象，这里是window.React。
 
 同理jquery的话就可以这样写：'jquery': 'jQuery'，那么require('jquery')即可。
 
 HTML中注意引入顺序即可：
-{% highlight javascript %}
+```javascript
 <script src="react.min.js" />
 <script src="bundle.js" />
-{% endhighlight %}
+```
 
 ----------------------
 ### 4.6 devtool
 提供了一些方式来使得代码调试更加方便，因为打包之后的代码是合并以后的代码，不利于排错和定位。其中有如下几种方式，参见官网[devtool](http://webpack.github.io/docs/configuration.html#devtool)
 
 例如，我在`basic/app.js`中增加如下配置：
-{% highlight javascript %}
+```javascript
 require('./app.css');
 
 // 新增hello.js，显然在文件夹中是不会存在hello.js文件的，这里会报错
 require('./hello.js');
 
 document.getElementById("container").textContent = "APP";
-{% endhighlight %}
+```
 执行文件，之后运行`index.html`，报错结果如下：
 
 ![这里写图片描述](http://img.blog.csdn.net/20160723172740677)
@@ -482,12 +482,12 @@ document.getElementById("container").textContent = "APP";
 从这里你完全看不出到底你程序的哪个地方出错了，并且这里的行数还算少，当一个文件出现了上千行的时候，你定位`bug`的时间将会更长。
 
 增加`devtool`文件配置，如下：
-{% highlight javascript %}
+```javascript
 module.exports = {
 	devtool: 'eval-source-map',
 	// ....
 };
-{% endhighlight %}
+```
 执行文件，之后运行`index.html`，报错结果如下：
 
 ![这里写图片描述](http://img.blog.csdn.net/20160723173217887)
@@ -503,7 +503,7 @@ module.exports = {
 ### 5.1 代码块划分
 ------------
 **5.1.1 Commonjs采用`require.ensure`来产生`chunk`块**
-{% highlight javascript %}
+```javascript
 require.ensure(dependencies, callback);
 
 //static imports
@@ -513,29 +513,29 @@ import _ from 'lodash'
 require.ensure([], function(require) {
   let contacts = require('./contacts')
 })
-{% endhighlight %}
+```
 这一点在`output.chunkFileName`中已经做过演示，可以去查看
 
 ----------------------------
 **5.1.2 AMD采用`require`来产生`chunk`块**
-{% highlight javascript %}
+```javascript
 require(["module-a", "module-b"], function(a, b) {
     // ...
 });
-{% endhighlight %}
+```
 
 ---------------------
 **5.1.3 将项目APP代码与公共库文件单独打包**
 
 我们在`basic/app.js`中添加如下代码
-{% highlight javascript %}
+```javascript
 var $ = require('juqery'),
 	_ = require('underscore');
 
 //.....
-{% endhighlight %}
+```
 然后我们在配置文件中添加`vendor`，以及运用代码分离的插件对生成的`vendor`块重新命名
-{% highlight javascript %}
+```javascript
 var webpack = require("webpack");
 
 module.exports = {
@@ -550,7 +550,7 @@ module.exports = {
 		new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js")
 	]
 };
-{% endhighlight %}
+```
 运行配置文件，效果如下：
 
 ![这里写图片描述](http://img.blog.csdn.net/20160723191116598)
@@ -559,18 +559,18 @@ module.exports = {
 **5.1.4 抽取多入口文件的公共部分**
 
 我们重新建立一个文件夹叫做`common`，有如下文件：
-{% highlight javascript %}
+```javascript
 // common/app1.js
 
 console.log("APP1");
-{% endhighlight %}
-{% highlight javascript %}
+```
+```javascript
 // common/app2.js
 
 console.log("APP2");
-{% endhighlight %}
+```
 打包之后生成的`app1.bundle.js`、`app2.bundle.js`中会存在许多公共代码，我们可以将它提取出来。
-{% highlight javascript %}
+```javascript
 // common/webpack.config.js
 
 /**
@@ -599,7 +599,7 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin("common.js")
     ]
 };
-{% endhighlight %}
+```
 抽取出的公共js为`common.js`,如图
 
 ![这里写图片描述](http://img.blog.csdn.net/20160723192023883)
@@ -611,7 +611,7 @@ module.exports = {
 **5.1.5 抽取css文件，打包成css bundle**
 
 默认情况下以`require('style.css')`情况下导入样式文件，会直接在`index.html`的`<head>`中生成`<style>`标签，属于内联。如果我们想将这些css文件提取出来，可以按照下面的配置去做。
-{% highlight javascript %}
+```javascript
 // extract-css/app1.js
 require('./app1.css');
 document.getElementById("container").textContent = "APP";
@@ -670,7 +670,7 @@ module.exports = {
         new ExtractTextPlugin("[name].css")
     ]
 };
-{% endhighlight %}
+```
 得到的效果如下图：
 
 ![这里写图片描述](http://img.blog.csdn.net/20160723193957752)
@@ -678,7 +678,7 @@ module.exports = {
 如果包含chunk文件，并且chunk文件中也因为了样式文件，那么样式文件会嵌入到js中
 
 **css合并到一个文件**
-{% highlight javascript %}
+```javascript
 // ...
 module.exports = {
     // ...
@@ -688,7 +688,7 @@ module.exports = {
         })
     ]
 }
-{% endhighlight %}
+```
 效果如图：
 
 ![这里写图片描述](http://img.blog.csdn.net/20160723194749005)
@@ -696,7 +696,7 @@ module.exports = {
 如果包含chunk文件，并且chunk文件中也因为了样式文件，样式文件不会嵌入到js中，而是直接输出到`style.css`
 
 **配合CommonsChunkPlugin一起使用**
-{% highlight javascript %}
+```javascript
 // ...
 module.exports = {
     // ...
@@ -705,7 +705,7 @@ module.exports = {
         new ExtractTextPlugin("[name].css")
     ]
 }
-{% endhighlight %}
+```
 效果图如下：
 
 ![这里写图片描述](http://img.blog.csdn.net/20160723200356707)
@@ -716,7 +716,7 @@ module.exports = {
 线上发布时为了防止浏览器缓存静态资源而改变文件版本，这里提供两种做法：
 
 **5.2.1 使用`HtmlWebpackPlugin`插件**
-{% highlight javascript %}
+```javascript
 // version/webpack.config.js
 
 /**
@@ -748,7 +748,7 @@ module.exports = {
         })
     ]
 };
-{% endhighlight %}
+```
 生成的效果如下：
 
 ![这里写图片描述](http://img.blog.csdn.net/20160723201203843)
@@ -757,7 +757,7 @@ module.exports = {
 
 ----------------
 **5.2.2 自定义插件给文件添加版本**
-{% highlight javascript %}
+```javascript
 // version/webpack.config.version.js
 
 /**
@@ -801,7 +801,7 @@ module.exports = {
         }
     ]
 };
-{% endhighlight %}
+```
 
 效果如图：
 
@@ -814,19 +814,19 @@ module.exports = {
 比如有如下场景：我们用到 Pen 这个模块, 这个模块对依赖一个 window.jQuery, 可我手头的 jQuery 是 CommonJS 语法的，而 Pen 对象又是生成好了绑在全局的, 可是我又需要通过 require('pen') 获取变量。 最终的写法就是做 Shim 处理直接提供支持:
 
 **做法一：**
-{% highlight javascript %}
+```javascript
 {test: require.resolve('jquery'), loader: 'expose?jQuery'}, // 输出jQuery到全局
 {test: require.resolve('pen'), loader: 'exports?window.Pen'}    // 将Pen作为一个模块引入
-{% endhighlight %}
+```
 
 **做法二：**
-{% highlight javascript %}
+```javascript
 new webpack.ProvidePlugin({
     $: "jquery",
     jQuery: "jquery",
     "window.jQuery": "jquery"
 })
-{% endhighlight %}
+```
 >This plugin makes a module available as variable in every module. 
 >The module is required only if you use the variable.
 >Example: Make $ and jQuery available in every module without writing require("jquery").
@@ -838,33 +838,33 @@ new webpack.ProvidePlugin({
 
 官网给出了两种写法：
 
-{% highlight javascript %}
+```javascript
 // Identity loader
 module.exports = function(source) {
   return source;
 };
-{% endhighlight %}
+```
 
-{% highlight javascript %}
+```javascript
 // Identity loader with SourceMap support
 module.exports = function(source, map) {
   this.callback(null, source, map);
 };
-{% endhighlight %}
+```
 第一种为基础的写法，采用`return`返回， 是因为是同步类的 Loader 且返回的内容唯一。如果你写loader有依赖的话，同样的你也可以在头部进行引用，比如：
-{% highlight javascript %}
+```javascript
 // Module dependencies.
 var fs = require("fs");
 module.exports = function(source) {
   return source;
 };
-{% endhighlight %}
+```
 而第二种则是希望多个`loader`之间链式调用，将上一个`loader`返回的结果传递给下一个`loader`。
 
 **案例**
 
 比如我想开发一个es6-loader,专门用来做以`.es6`文件名结尾的文件处理，那么我们可以这么写
-{% highlight javascript %}
+```javascript
 // loader/es6-loader.js
 // 当然如果我这里不想将这个loader所返回的东西传递给下一个laoder，那么我
 // 可以在最后直接返回return source
@@ -886,7 +886,7 @@ console.log(a);
 // 向loader中传递参数
 require('./es6-loader?param1=p1!./loader1.es6');
 document.getElementById("container").textContent = "APP";
-{% endhighlight %}
+```
 执行webpack打包命令，在控制台会打印出param的值，如图：
 
 ![这里写图片描述](http://img.blog.csdn.net/20160723221900665)
@@ -906,7 +906,7 @@ document.getElementById("container").textContent = "APP";
 
 插件是可以实例化的对象，在它的prototype上必须绑定一个`apply`方法。这个方法会在插件安装的时候被`Webpack compiler`进行调用。
 
-{% highlight javascript %}
+```javascript
 function HelloWorldPlugin(options) {
 	// Setup the plugin instance with options...
 }
@@ -918,11 +918,11 @@ HelloWorldPlugin.prototype.apply = function(compiler) {
 };
 
 module.exports = HelloWorldPlugin;
-{% endhighlight %}
+```
 
 安装一个插件，将其添加到配置中的`plugins`数组中。
 
-{% highlight javascript %}
+```javascript
 var HelloWorldPlugin = require('hello-world');
 
 var webpackConfig = {
@@ -931,7 +931,7 @@ var webpackConfig = {
 		new HelloWorldPlugin({options: true})
 	]
 };
-{% endhighlight %}
+```
 执行效果如图：
 
 ![这里写图片描述](http://img.blog.csdn.net/20160723223746845)
@@ -939,7 +939,7 @@ var webpackConfig = {
 这里只作简单的引入，平常一般都不需要自己写插件，如果想进一步了解，可以去看官网例子
 
 ### 5.5 布置一个本地服务器
-{% highlight javascript %}
+```javascript
 // 1.全局安装webpack-dev-server
 cnpm install -g webpack-dev-server
 
@@ -947,11 +947,11 @@ cnpm install -g webpack-dev-server
 webpack-dev-server --content-base basic/
 
 // 3. 在浏览器输入localhost:8080
-{% endhighlight %}
+```
 
 ------------------
 ### 5.6 热替换
-{% highlight javascript %}
+```javascript
 // auto-refresh/app.js
 document.getElementById("container").textContent = "APP APP HOT ";
 console.log("OK");
@@ -1024,11 +1024,11 @@ module.exports = {
 node server.js
 
 // 浏览器输入：localhost:8080
-{% endhighlight %}
+```
 
 ----------------------------
 ### 5.7 让wepack.config.js支持es6写法
-{% highlight javascript %}
+```javascript
 // 1. 安装babel-core、babel-preset-es2015以及babel-loader
 
 // 2. 项目根目录下配置.babelrc文件
@@ -1041,12 +1041,13 @@ node server.js
 // 4.运行webpack --config webpack.config.babel.js
 
 // 说明node 版本5.0以上，babel-core版本6以上需要如此配置
-{% endhighlight %}
+```
+
 >这是一个 Webpack 支持，但文档里完全没有提到的特性  （应该马上就会加上）。只要你把配置文件命名成 webpack.config.[loader].js ，Webpack 就会用相应的 loader 去转换一遍配置文件。所以要使用这个方法，你需要安装 babel-loader 和 babel-core 两个包。记住你不需要完整的 babel 包。
 
 **其他办法(未成功)**
 
-{% highlight javascript %}
+```javascript
 1.在上述的方案中，其实不需要重新命名就可以直接运行webpack，但是今天试了一直不成功
 2.{ 
 	test : /\.js|jsx$/, 
@@ -1056,7 +1057,7 @@ node server.js
           presets: ['es2015', 'react']
     } 
 }
-{% endhighlight %}
+```
 
 ## 6.相关链接
 [webpack官方网站](http://webpack.github.io/docs/)
