@@ -56,7 +56,7 @@ ReactDOM.render(
 
 ----------
 
-{% highlight html %}
+```html
 <div id="root"></div>
 <script src="https://unpkg.com/react@15.4.1/dist/react.min.js"></script>
 <script src="https://unpkg.com/react@15.4.1/dist/react-dom.min.js"></script>

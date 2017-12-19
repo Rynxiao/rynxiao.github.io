@@ -38,11 +38,11 @@ tag: [css, css声明, background]
 
 你会发现第一张图片会在第二张图片之上。另外，如果指定了背景颜色，那么背景颜色会在`background-color`之下被绘制，看下面这张效果图：
 
-![b-image-color](http://images2017.cnblogs.com/blog/681618/201712/681618-20171214224803310-2061389222.png)
+![b-image-color](http://oyo3prim6.bkt.clouddn.com/css-deep-study/b-image-color.png)
 
 总的层叠关系如下简图所示：
 
-![b-image-layout](http://images2017.cnblogs.com/blog/681618/201712/681618-20171214224830654-1779253466.png)
+![b-image-layout](http://oyo3prim6.bkt.clouddn.com/css-deep-study/b-image-z.png)
 
 当背景图片设置为`inherit`时，表示继承自父容器的背景图片。如果父容器没有设置背景图片，默认为`none`。例如下面的代码示例：
 
@@ -106,7 +106,7 @@ tag: [css, css声明, background]
 
 右下角绝对定位一个容器，背景图片继承自container，左上角默认定位若干个嵌套的容器，在最底层设置背景图片继承自父容器。效果图如下：
 
-![b-image-inherit](http://images2017.cnblogs.com/blog/681618/201712/681618-20171214224901404-334365563.png)
+![b-image-inherit](http://oyo3prim6.bkt.clouddn.com/css-deep-study/b-image-inherit.png)
 
 可以看到，右下角继承了父容器`container`的背景图片，而左上角什么也没有。因为最底层的容器背景图片设置为`inherit`，当时上层容器un-image-wrapper中并没有设置任何背景图片，因此继承属性默认为`none`。因此得出的结论是：背景图片继承只能是继承自和自己最近的父容器设置的背景图，这点和字体继承(可看我在wrapper1中设置的字体颜色分别应用到了下层的子元素中)略有差别。
 
@@ -148,7 +148,7 @@ tag: [css, css声明, background]
 
 通过一个`select`来改变`origin`的值，通过一个展示区域显示图片
 
-![b-origin](http://images2017.cnblogs.com/blog/681618/201712/681618-20171214224934982-1785364315.png)
+![b-origin](http://oyo3prim6.bkt.clouddn.com/css-deep-study/%20b-origin.png)
 
 代码请戳这里: [https://codepen.io/rynxiao/pen/eymqpP](https://codepen.io/rynxiao/pen/eymqpP)
 
@@ -193,7 +193,7 @@ tag: [css, css声明, background]
 
 同样通过设置一个`select`来改变`background-attachment`的值，可以观察到图片的表现状态：
 
-![b-attachment](http://images2017.cnblogs.com/blog/681618/201712/681618-20171214225003935-1116093775.png)
+![b-attachment](http://oyo3prim6.bkt.clouddn.com/css-deep-study/b-attachment.png)
 
 当设置为`scroll`的时候，图片会固定在容器的下方，而设置为`local`的时候，图片会固定在内容的下方，需要滑动一定的距离才能看得见图片。
 
@@ -207,7 +207,7 @@ tag: [css, css声明, background]
 -   padding-box 背景色以padding区域开始裁剪
 -   content-box 背景色以内容区域开始裁剪(这点其实在我们工作中经常会被用到)
 
-![b-clip](http://images2017.cnblogs.com/blog/681618/201712/681618-20171214225028154-1050974513.png)
+![b-clip](http://oyo3prim6.bkt.clouddn.com/css-deep-study/b-clip.png)
 
 默认的属性的值为`border-box`。这里重点说一下`content-box`（至少我工作中用到了🤣）,比如你设置了一个容器的内边距值，但是你只希望内容区域有背景色的时候，就可以使用这个属性，而没有必要将padding改为margin。因为margin可能会引起`上边距折叠的问题`
 
@@ -248,7 +248,7 @@ center       ->  (400 - 20) * 50%px (300 - 20) * 50%px
 center       ->  (400 - 700) * 50%px (300 - 400) * 50%px     ->   -150px -50px
 ```
 
-![b-position](http://images2017.cnblogs.com/blog/681618/201712/681618-20171214225100279-1726986268.png)
+![b-position](http://oyo3prim6.bkt.clouddn.com/css-deep-study/b-position-1.png)
 
 `position`最大的应用为早期制作精灵/雪碧图。例如CSDN中如此应用：
 
@@ -263,7 +263,7 @@ center       ->  (400 - 700) * 50%px (300 - 400) * 50%px     ->   -150px -50px
 
 顺便画了一个非常拙劣的图
 
-![b-position-2](http://images2017.cnblogs.com/blog/681618/201712/681618-20171214225123935-1528248010.png)
+![b-position-2](http://oyo3prim6.bkt.clouddn.com/css-deep-study/b-position-2.png)
 
 代码请戳这里：[https://codepen.io/rynxiao/pen/ZvGzyb](https://codepen.io/rynxiao/pen/ZvGzyb)
 
@@ -291,7 +291,7 @@ reCaculateImageWidth()
 
 一个简单的例子：如果我的容器尺寸为：224 x 224， 图片的尺寸为：28 x 28，那么在水平方向上刚好可以放下8个图片。而当我把容器尺寸改为：238 x 224时，会发现水平方向出现了9个星星， 图片被缩小；而改为237 x 224的时候，依然是8个星星，但是图片被放大。
 
-![b-repeat](http://images2017.cnblogs.com/blog/681618/201712/681618-20171214225151248-1778534432.png)
+![b-repeat](http://oyo3prim6.bkt.clouddn.com/css-deep-study/b-repeat.png)
 
 代码请戳这里：[https://codepen.io/rynxiao/pen/opXLaO](https://codepen.io/rynxiao/pen/opXLaO)
 
@@ -333,7 +333,7 @@ reCaculateImageWidth()
 
 下面是一个实际的例子截图：
 
-![b-size](http://images2017.cnblogs.com/blog/681618/201712/681618-20171214225212326-1416609798.png)
+![b-size](http://oyo3prim6.bkt.clouddn.com/css-deep-study/b-size.png)
 
 代码请戳这里：[https://codepen.io/rynxiao/pen/PEwLxN](https://codepen.io/rynxiao/pen/PEwLxN)
 
