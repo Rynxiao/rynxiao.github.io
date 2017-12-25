@@ -136,7 +136,8 @@ module.exports = {
 
 -----------
 `basic/index.html`
-{% highlight html %}
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
