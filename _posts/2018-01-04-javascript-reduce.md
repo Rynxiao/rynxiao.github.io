@@ -55,7 +55,7 @@ anagrams("abc");    // 结果会是什么呢？
 
 `reduce`负责筛选出每一次执行的首字母，递归负责对剩下字母的排列组合。
 
-<p data-height="265" data-theme-id="0" data-slug-hash="mpMeRG" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce anagrams" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/mpMeRG/">reduce anagrams</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="mpMeRG" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce anagrams" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/mpMeRG/">reduce anagrams</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ### 片段二：累加器
@@ -65,7 +65,7 @@ const sum = arr => arr.reduce((acc, val) => acc + val, 0);
 sum([1, 2, 3]);
 ```
 
-<p data-height="265" data-theme-id="0" data-slug-hash="OzjyOG" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce sum" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/OzjyOG/">reduce sum</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="OzjyOG" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce sum" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/OzjyOG/">reduce sum</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ### 片段三：计数器
@@ -77,7 +77,7 @@ countOccurrences([1, 2, 3, 2, 2, 5, 1], 1);
 
 循环数组，每遇到一个值与给定值相等，即加1，同时将加上之后的结果作为下次的初始值。
 
-<p data-height="265" data-theme-id="0" data-slug-hash="rpzOJy" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce count occurrences" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/rpzOJy/">reduce count occurrences</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="rpzOJy" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce count occurrences" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/rpzOJy/">reduce count occurrences</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ### 片段四：函数柯里化
@@ -94,7 +94,7 @@ curry(Math.min, 3)(10)(50)(2);
 
 通过判断函数的参数取得当前函数的`length`(当然也可以自己指定)，如果所传的参数比当前参数少，则继续递归下面，同时储存上一次传递的参数。
 
-<p data-height="265" data-theme-id="0" data-slug-hash="PEKPRg" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce curry" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/PEKPRg/">reduce curry</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="PEKPRg" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce curry" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/PEKPRg/">reduce curry</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ### 片段五：数组扁平化
@@ -105,7 +105,7 @@ const deepFlatten = arr =>
 deepFlatten([1, [2, [3, 4, [5, 6]]]]);
 ```
 
-<p data-height="265" data-theme-id="0" data-slug-hash="RxZWev" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce deep flatten array" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/RxZWev/">reduce deep flatten array</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="RxZWev" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce deep flatten array" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/RxZWev/">reduce deep flatten array</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ### 片段六：生成菲波列契数组
@@ -115,7 +115,7 @@ const fibonacci = n => Array(n).fill(0).reduce((acc, val, i) => acc.concat(i > 1
 fibonacci(5);
 ```
 
-<p data-height="265" data-theme-id="0" data-slug-hash="NXvGoG" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce fibonacci" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/NXvGoG/">reduce fibonacci</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="NXvGoG" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce fibonacci" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/NXvGoG/">reduce fibonacci</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ### 片段七：管道加工器
@@ -127,7 +127,7 @@ pipe(btoa, x => x.toUpperCase())("Test");
 
 通过对传递的参数进行函数加工，之后将加工之后的数据作为下一个函数的参数，这样层层传递下去。
 
-<p data-height="265" data-theme-id="0" data-slug-hash="MrvaRp" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce pipe" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/MrvaRp/">reduce pipe</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="MrvaRp" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce pipe" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/MrvaRp/">reduce pipe</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ### 片段八：中间件
@@ -178,7 +178,7 @@ afterDispatch(testAction("1111"));
 
 `redux`中经典的`compose`函数中运用了这种方式，通过对中间件的重重层叠，在真正发起action的时候触发函数执行。
 
-<p data-height="265" data-theme-id="0" data-slug-hash="XVaXoo" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce middlewares" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/XVaXoo/">reduce middlewares</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="XVaXoo" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce middlewares" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/XVaXoo/">reduce middlewares</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ### 片段九：redux-actions对state的加工片段
@@ -222,7 +222,7 @@ const handleActions = (handlers, defaultState, { namespace } = {}) => {
 }
 ```
 
-<p data-height="265" data-theme-id="0" data-slug-hash="barpBv" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce handleActions" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/barpBv/">reduce handleActions</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="barpBv" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce handleActions" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/barpBv/">reduce handleActions</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ### 片段十：数据加工器
@@ -252,7 +252,7 @@ const items = [{ price: 10 }, { price: 120 }, { price: 1000 }];
 const totals = items.reduce(bigTotalPriceReducer, initialState);
 ```
 
-<p data-height="265" data-theme-id="0" data-slug-hash="qpXJaB" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce handleActions" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/qpXJaB/">reduce handleActions</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="qpXJaB" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce handleActions" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/qpXJaB/">reduce handleActions</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ### 片段十一：对象空值判断
@@ -292,13 +292,112 @@ const get = (p, o) => p.reduce((xs, x) => (xs && xs[x] ? xs[x] : null), o);
 get(['classes', 0, 'teachers', 0, 'name'], school);   // 张二蛋
 ```
 
-<p data-height="265" data-theme-id="0" data-slug-hash="operQq" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce handleActions" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/operQq/">reduce handleActions</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<p data-height="265" data-theme-id="0" data-slug-hash="operQq" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce handleActions" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/operQq/">reduce handleActions</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+### 片段十二：分组
+
+```javascript
+const groupBy = (arr, func) =>
+arr.map(typeof func === 'function' ? func : val => val[func]).reduce((acc, val, i) => {
+    acc[val] = (acc[val] || []).concat(arr[i]);
+    return acc;
+}, {});
+groupBy([6.1, 4.2, 6.3], Math.floor); 
+groupBy(['one', 'two', 'three'], 'length'); 
+```
+
+首先通过`map`计算出所有的键值，然后再根据建值进行归类
+
+<p data-height="265" data-theme-id="0" data-slug-hash="QaqqXZ" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce group-by" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/QaqqXZ/">reduce group-by</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+### 片段十三：对象过滤
+
+```javascript
+const pick = (obj, arr) =>
+    arr.reduce((acc, curr) => (curr in obj && (acc[curr] = obj[curr]), acc), {});
+
+pick({ a: 1, b: '2', c: 3 }, ['a', 'c']);
+```
+
+根据给出的键值来遍历，比较对象中是否存在相同键值的的值，然后通过逗号表达式把赋值后的对象赋给下一个的初始值
+
+<p data-height="265" data-theme-id="0" data-slug-hash="QaqONY" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce pick" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/QaqONY/">reduce pick</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+### 片段十四：数组中删除指定位置的值
+
+```javascript
+const remove = (arr, func) =>
+    Array.isArray(arr)
+    ? arr.filter(func).reduce((acc, val) => {
+          arr.splice(arr.indexOf(val), 1);
+          return acc.concat(val);
+    }, []) : [];
+
+const arr = [1, 2, 3, 4];
+remove(arr, n => n % 2 == 0);
+```
+
+首先根据`filter`函数过滤出数组中符合条件的值，然后使用`reduce`在原数组中删除符合条件的值，可以得出最后arr的值变成了[1, 3]
+
+<p data-height="265" data-theme-id="0" data-slug-hash="aELVpZ" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce remove" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/aELVpZ/">reduce remove</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+### 片段十五：promise按照顺序执行
+
+```javascript
+const runPromisesInSeries = ps => ps.reduce((p, next) => p.then(next), Promise.resolve());
+
+const delay = d => new Promise(r => setTimeout(r, d));
+const print = args => new Promise(r => r(args));
+runPromisesInSeries([() => delay(1000), () => delay(2000), () => print('hello')]);
+```
+
+<p data-height="265" data-theme-id="0" data-slug-hash="QaqOMR" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce runPromisesInSeries" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/QaqOMR/">reduce runPromisesInSeries</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+### 片段十六：排序
+
+```javascript
+
+const orderBy = (arr, props, orders) =>
+    [...arr].sort((a, b) =>
+        props.reduce((acc, prop, i) => {
+            if (acc === 0) {
+                const [p1, p2] = orders && orders[i] === 'desc' ? [b[prop], a[prop]] : [a[prop], b[prop]];
+                acc = p1 > p2 ? 1 : p1 < p2 ? -1 : 0;
+            }
+            return acc;
+        }, 0)
+    );
+
+const users = [{ name: 'fred', age: 48 }, { name: 'barney', age: 36 }, { name: 'fly', age: 26 }];
+orderBy(users, ['name', 'age'], ['asc', 'desc']); 
+orderBy(users, ['name', 'age']);
+```
+
+<p data-height="265" data-theme-id="0" data-slug-hash="MrEOzK" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce orderBy" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/MrEOzK/">reduce orderBy</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+### 片段十七：选择
+
+```javascript
+const select = (from, selector) =>
+    selector.split('.').reduce((prev, cur) => prev && prev[cur], from);
+
+const obj = { selector: { to: { val: 'val to select' } } };
+select(obj, 'selector.to.val');
+```
+
+<p data-height="265" data-theme-id="0" data-slug-hash="PEJOLV" data-default-tab="js" data-user="rynxiao" data-embed-version="2" data-pen-title="reduce select" data-preview="true" class="codepen">See the Pen <a href="https://codepen.io/rynxiao/pen/PEJOLV/">reduce select</a> by 糊一笑 (<a href="https://codepen.io/rynxiao">@rynxiao</a>) on <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ### 参考地址
 
-https://zhuanlan.zhihu.com/p/27748589
+[https://zhuanlan.zhihu.com/p/27748589](https://zhuanlan.zhihu.com/p/27748589)
 
-http://www.jb51.net/article/121572.html
+[http://www.jb51.net/article/121572.html](http://www.jb51.net/article/121572.html)
 
-Https://github.com/Chalarangelo/30-seconds-of-code#anagrams-of-string-with-duplicates
+[https://github.com/Chalarangelo/30-seconds-of-code#anagrams-of-string-with-duplicates](https://github.com/Chalarangelo/30-seconds-of-code#anagrams-of-string-with-duplicates)
