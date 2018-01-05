@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "关于React组件之间如何优雅地传值的探讨"
+title:  "几个关于js数组方法reduce的经典片段"
 date:   2018-01-04
 categories: 技术
-excerpt: '持续更新…测试浏览器Chrome: 61.0.3163.73Safari: 10.0（IOS 10.3.3）Github: webapp-bugs1. IOS overflow: scroll 全屏滚动出界1.1 出现场景滑动到最顶部(最底部)的时候，停下，然后继续向上滑动(向下滑动)1.2 解决方案 手动设置滑到边界时的scrollTop（scrollFix） 当快滑到上边界或者下边界的值时，手动'
+excerpt: '以下是个人在工作中收藏总结的一些关于javascript数组方法reduce的相关代码片段，后续遇到其他使用这个函数的场景，将会陆续添加，这里作为备忘。 javascript数组那么多方法，为什么我要单挑reduce方法，一个原因是我对这个方法掌握不够，不能够用到随心所欲。另一个方面，我也感觉到了这个方法的庞大魅力，在许多的场景中发挥着神奇的作用。 理解reduce函数 reduc'
 tag: [javascript,Array,reduce]
 ---
 
