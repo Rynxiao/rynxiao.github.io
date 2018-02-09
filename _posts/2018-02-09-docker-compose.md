@@ -12,8 +12,8 @@ tag: [docker,compose,运维]
 系列文章：
 
 - [小白学Docker之基础篇](http://rynxiao.com/%E6%8A%80%E6%9C%AF/2018/02/07/docker-intro.html)
-- [小白学Docker之Compose](http://rynxiao.com/%E6%8A%80%E6%9C%AF/2018/02/07/docker-compose.html)
-- [小白学Docker之Swarm](http://rynxiao.com/%E6%8A%80%E6%9C%AF/2018/02/07/docker-swarm.html)
+- [小白学Docker之Compose](http://rynxiao.com/%E6%8A%80%E6%9C%AF/2018/02/09/docker-compose.html)
+- [小白学Docker之Swarm](http://rynxiao.com/%E6%8A%80%E6%9C%AF/2018/02/10/docker-swarm.html)
 
 ## 概念
 
