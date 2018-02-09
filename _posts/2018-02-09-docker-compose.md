@@ -9,6 +9,12 @@ tag: [docker,compose,运维]
 
 承接上篇文章：[小白学Docker之基础篇](http://rynxiao.com/%E6%8A%80%E6%9C%AF/2018/02/07/docker-intro.html)，自学网站来源于[https://docs.docker.com/get-started](https://docs.docker.com/get-started)
 
+系列文章：
+
+- [小白学Docker之基础篇](http://rynxiao.com/%E6%8A%80%E6%9C%AF/2018/02/07/docker-intro.html)
+- [小白学Docker之Compose](http://rynxiao.com/%E6%8A%80%E6%9C%AF/2018/02/07/docker-compose.html)
+- [小白学Docker之Swarm](http://rynxiao.com/%E6%8A%80%E6%9C%AF/2018/02/07/docker-swarm.html)
+
 ## 概念
 
 Compose是一个编排和运行多容器Docker应用的工具，主要是通过一个YAML文件进行服务配置。
