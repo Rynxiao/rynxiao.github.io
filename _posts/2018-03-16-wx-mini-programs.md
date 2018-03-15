@@ -29,7 +29,7 @@ tag: [微信,小程序]
 
 只是感兴趣稍微做了一下案例，其中功能可能根本就还只是九牛一毛，但是觉得有必要记录一下，说说自己遇到的问题以及解决办法，界面整体如下：
 
-![all](//img-blog.csdn.net/20180315202221519)
+![all](http://oyo3prim6.bkt.clouddn.com/wx/2018-03-15%2019_19_15.gif)
 
 首先，在`app.json`中编写页面路由，如下：
 
@@ -108,7 +108,7 @@ setNickName(option) {
 
 最开始的样子就是这样子的：
 
-![first-chat](//img-blog.csdn.net/20180315202255505)
+![first-chat](http://oyo3prim6.bkt.clouddn.com/wx/first-chat.png)
 
 至此，基本的页面形态就已经完成了。
 
@@ -179,7 +179,7 @@ Page({
 
 如果是一个真正的聊天程序应该怎么做呢？我的设想是这样的：
 
-![first-chat-one](//img-blog.csdn.net/20180315202323546)
+![first-chat-one](http://oyo3prim6.bkt.clouddn.com/wx/first-chat-one.png)
 
 由于当时自己的机器由于莫名的原因不能够进行登录，后来采用了本地开了一个`websocket`的服务器来实现消息的发送。服务器代码相当简单，只是消息的转发而已
 
