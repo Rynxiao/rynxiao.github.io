@@ -86,8 +86,8 @@ Page({
 因此`chat.wxml`最开始就是这样规划的：
 
 ```html
-<block wx:for="{{ messages }}" wx:key="messages{{ index }}" >
-  <template id="{{ item.id }}" is="bubble" data="{{ ...item }}" />
+<block wx:for="\{\{ messages \}\}" wx:key="messages\{\{ index \}\}" >
+  <template id="\{\{ item.id \}\}" is="bubble" data="\{\{ ...item \}\}" />
 </block>
 ```
 
@@ -130,10 +130,10 @@ setNickName(option) {
     scroll-y 
     scroll-with-animation 
     class="chat-content"  
-    scroll-top="{{ scrollTop }}"
-    scroll-into-view="{{ lastId }}">
-    <block wx:for="{{ messages }}" wx:key="messages{{ index }}" >
-      <template id="msg{{ index }}" is="bubble" data="{{ ...item }}" />
+    scroll-top="\{\{ scrollTop \}\}"
+    scroll-into-view="\{\{ lastId \}\}">
+    <block wx:for="\{\{ messages \}\}" wx:key="messages\{\{ index \}\}" >
+      <template id="msg\{\{ index \}\}" is="bubble" data="\{\{ ...item \}\}" />
     </block>
   </scroll-view>
 
