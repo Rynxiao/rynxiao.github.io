@@ -7,6 +7,28 @@ excerpt: '选择排序,选择排序每次比较的是数组中特定索引的值
 tag: [算法,排序,javascript]
 ---
 
+## 写在前面
+
+一直很惧怕算法，总是感觉特别伤脑子，因此至今为止，几种基本的排序算法一直都不是很清楚，更别说时间复杂度、空间复杂度什么的了。
+
+今天抽空理了一下，其实感觉还好，并没有那么可怕，虽然代码写出来还是磕磕绊绊，但是思想和原理还是大致上摸清楚了，记录、分享。
+
+## 说明
+
+关于排序，前辈们已经讲解的够多了，我这里主要摘录一些概念。
+
+### 排序算法分类
+
+- 比较排序，时间复杂度为O(nlogn) ~ O(n^2)，主要有：**冒泡排序，选择排序，插入排序，归并排序，堆排序，快速排序**等
+- 非比较排序，时间复杂度可以达到O(n)，主要有：**计数排序，基数排序，桶排序**等
+
+### 排序稳定性
+
+排序算法稳定性的简单形式化定义为：如果Ai = Aj，排序前Ai在Aj之前，排序后Ai还在Aj之前，则称这种排序算法是稳定的。
+
+- [常用排序算法总结(一)](https://www.cnblogs.com/eniac12/p/5329396.html#s32)
+- [关于时间复杂度和空间复杂度](https://www.cnblogs.com/songQQ/archive/2009/10/20/1587122.html)
+
 ## 选择排序
 
 选择排序每次比较的是数组中特定索引的值与全数组中每个值的大小比较，每次都选出一个最小(最大)值，如果当前索引的值大于之后索引的值，则两者进行交换
@@ -270,6 +292,7 @@ console.log(sortList);
 0 1 2 3 4 5 7 9
 0 1 2 3 4 5 6 7 9
 ```
+
 ## 希尔排序
 
 希尔排序是一种更高效的插入排序，通过设计步长(gap)将数组分组，然后每组中单独采用排序算法将每组排序，然后在缩小步长，进行重复的分组排序工作，直到gap变为1的时候，整个数组分为一组，算法结束。
@@ -360,8 +383,301 @@ console.log(arr);
 0 1 2 3 4 5 6 7 9
 ```
 
+## 归并排序
+
+归并排序采用的是一种分治思想，将整个数组递`归`分成若干小组，直到最后组中的个数为1时停止，那么此时再与同一级别的分组数字进行比较，这就是`并`的操作。然后向上一层层地进行合并，最终合成一个排序好的数组。
+
+这么讲可能有点糊涂，用一个例子分析。比如现在有这两个排序好的数组
+
+```javascript
+var a = [1, 4, 6, 7, 9];
+var b = [2, 3, 5, 8];
+var temp = [];
+
+// 比较过程如下：
+// 比较两个数组中的第一个数字，将数字小的压进temp数组，同时将这个数字从原数组中删除
+
+// 第一步
+a[0] < b[0] 
+// 得到
+a: [4, 6, 7, 9]
+b: [2, 3, 5, 8]
+temp: [1]
+
+// 第二步
+a[0] > b[0]
+// 得到
+a: [4, 6, 7, 9]
+b: [3, 5, 8]
+temp: [1, 2]
+
+// 第三步
+a[0] > b[0]
+// 得到
+a: [4, 6, 7, 9]
+b: [5, 8]
+temp: [1, 2, 3]
+
+// 中间省略N步
+
+// 第N+1步
+a: [9]
+b: []
+temp: [1, 2, 3, 4, 5, 6, 7, 8]
+// 此时b数组已经为空，则直接归并
+// 得到
+a: []
+b: []
+temp: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
+
+注：以上的步骤只是归并排序递归中的最上层的一步，其中下面还会分成很多小的合并步骤。
+
+```javascript
+// 分类 -------------- 内部比较排序
+// 数据结构 ---------- 数组
+// 最差时间复杂度 ---- O(nlogn)
+// 最优时间复杂度 ---- O(nlogn)
+// 平均时间复杂度 ---- O(nlogn)
+// 所需辅助空间 ------ O(n)
+// 稳定性 ------------ 稳定
+
+var arr = [1, 4, 5, 2, 3, 9, 0, 7, 6];
+var len = arr.length;
+
+function mergeArray(arr, first, mid, last, t) {
+	var i = mid, 
+		j = last,
+		m = first,
+		n = mid + 1,
+		k = 0;
+
+	while (m <= mid && n <= last) {
+		if (arr[m] > arr[n]) {
+			t[k++] = arr[n++];
+		} else {
+			t[k++] = arr[m++];
+		}
+	}
+
+	while (m <= i) {
+		t[k++] = arr[m++]
+	}
+
+	while(n <= j) {
+		t[k++] = arr[n++];
+	}
+
+	for (var p = 0; p < k; p++) {
+		arr[first + p] = t[p];
+	}
+}
+
+function mergeSort(arr, first, last, t) {
+	if (first < last) {
+		var mid = Math.floor((first + last) / 2);
+		mergeSort(arr, first, mid, t);
+		mergeSort(arr, mid + 1, last, t)
+		mergeArray(arr, first, mid, last, t);
+	}
+}
+
+mergeSort(arr, 0, len - 1, []);
+
+console.log(arr);
+```
+
+过程大致如下：
+
+```javascript
+1 4 5 2 3 9 0 7 6
+1 4 5 2 3 9 0 7 6
+1 4 5 2 3 9 0 7 6
+1 4 5 2 3 9 0 7 6
+1 2 3 4 5 9 0 7 6
+1 2 3 4 5 0 9 7 6
+1 2 3 4 5 0 9 6 7
+1 2 3 4 5 0 6 7 9
+0 1 2 3 4 5 6 7 9
+```
+
+## 快速排序
+
+快速排序的原理是：首先随机选择一个值，遍历整个数组，比这个值小的放在左边的数组中，比这个值大的放在右边的数组中，然后再根据上一步得出的左右数组重复上述的操作，直到分出的左右数组长度为1或者0的时候停止。
+
+还是举个栗子吧：
+
+```javascript
+
+var arr = [1, 4, 5, 2, 3, 9, 0, 7, 6];
+
+// 1. 选取一个数，我这里取中间的数，即为arr[4] = 3
+left: [1, 2, 0]
+right: [4, 5, 9, 7, 6]
+
+// 2. 在左右数组中重复上述操作
+left: [1, 2, 0]
+取数：left[1] = 2
+
+left-left: [0, 1]   // 继续递归
+left-right: []      // 递归结束，直接返回
+
+right: [4, 5, 9, 7, 6]
+取数: right[3] = 9
+right-left: [4, 5, 7, 6]    // 继续递归
+right-right: []             // 递归结束，直接返回
+````
+
+在递归中排序，然后连接选出的那个数，就完成了整个数组的排序
+
+```javascript
+var arr = [1, 4, 5, 2, 3, 9, 0, 7, 6];
+
+function quickSort(arr) {
+	if (arr.length === 1 || arr.length === 0) {
+		return arr;
+	}
+
+	var left = [];
+	var right = [];
+	var len = arr.length;
+	var f = 0;
+	var l = len - 1;
+	var mid = Math.floor((f + l) / 2);
+	var midVal = arr[mid];
+
+	for (var i = 0; i < len; i++) {
+		if (arr[i] < arr[mid]) {
+			left.push(arr[i]);
+		} else if (arr[i] > arr[mid]) {
+			right.push(arr[i])
+		}
+	}
+
+	var leftArr = quickSort(left);
+	var rightArr = quickSort(right);
+
+	return leftArr.concat(midVal).concat(rightArr);
+}
+
+var result = quickSort(arr);
+console.log(result);
+```
+
+大致过程如下：
+
+```javascript
+left:    1 2 0
+middle:  3
+right:   4 5 9 7 6
+
+left:    1 0
+middle:  2
+right:  
+
+left:    0
+middle:  1
+right:  
+
+left:    4 5 7 6
+middle:  9
+right:  
+
+left:    4
+middle:  5
+right:   7 6
+
+left:    6
+middle:  7
+right:  
+```
+
+## 堆排序
+> 堆排序是指利用堆这种数据结构所设计的一种选择排序算法。堆是一种近似完全二叉树的结构（通常堆是通过一维数组来实现的），并满足性质：以最大堆（也叫大根堆、大顶堆）为例，其中父结点的值总是大于它的孩子节点。
+
+我们可以很容易的定义堆排序的过程：
+
+- 由输入的无序数组构造一个最大堆，作为初始的无序区
+- 把堆顶元素（最大值）和堆尾元素互换
+- 把堆（无序区）的尺寸缩小1，并调用heapify(A, 0)从新的堆顶元素开始进行堆调整
+- 重复步骤2，直到堆的尺寸为1
+
+更多请参看[https://www.cnblogs.com/skywang12345/p/3602162.html](https://www.cnblogs.com/skywang12345/p/3602162.html)，这篇文章中进行了很详细地讲解。
+
+```javascript
+var arr = [1, 4, 5, 2, 3, 9, 0, 7, 6];
+var len = arr.length;
+
+function swap(arr, i, j) {
+    var t = arr[j];
+    arr[j] = arr[i];
+    arr[i] = t;
+}
+
+function heapAdjust(arr, i, end) {
+	var left = 2 * i + 1;				// 左边子节点
+	var right = 2 * i + 2;				// 右侧子节点
+	var max = i;
+
+	if (left < end && arr[left] > arr[max]) {
+		max = left;
+	}
+
+	if (right < end && arr[right] > arr[max]) {
+		max = right;
+	}
+
+	if (max !== i) {
+		swap(arr, max, i);
+		heapAdjust(arr, max, end);
+	}
+}
+
+function buildMaxHeap(arr, len) {
+	var sNode = Math.floor(len / 2) - 1;	// 第一个需要调整的非叶子节点
+	for (var i = sNode; i >= 0; i--) {
+		heapAdjust(arr, i, len);
+	}
+	return len;
+}
+
+function heapSort(arr) {
+	var heapSize = buildMaxHeap(arr, len);
+
+	// 堆（无序区）元素个数大于1，未完成排序
+	while (heapSize > 1) {
+        // 将堆顶元素与堆的最后一个元素互换，并从堆中去掉最后一个元素
+        // 此处交换操作很有可能把后面元素的稳定性打乱，所以堆排序是不稳定的排序算法
+        swap(arr, 0, --heapSize);
+        // 从新的堆顶元素开始向下进行堆调整，时间复杂度O(logn)
+        heapAdjust(arr, 0, heapSize);     
+    }
+}
+
+heapSort(arr);
+console.log(arr);
+```
+
+大致实现如下：
+
+```javascript
+1 4 5 2 3 9 0 7 6
+7 6 5 4 3 1 0 2 9
+6 4 5 2 3 1 0 7 9
+5 4 1 2 3 0 6 7 9
+4 3 1 2 0 5 6 7 9
+3 2 1 0 4 5 6 7 9
+2 0 1 3 4 5 6 7 9
+1 0 2 3 4 5 6 7 9
+0 1 2 3 4 5 6 7 9
+```
+
 ## 参考
 
 - [常用排序算法总结(一)](https://www.cnblogs.com/eniac12/p/5329396.html)
 - [图解排序算法(二)之希尔排序](https://www.cnblogs.com/chengxiao/p/6104371.html)
-- [白话经典算法系列之三希尔排序的实现](https://www.cnblogs.com/skywang12345/p/3597597.html)
+- [希尔排序](https://www.cnblogs.com/skywang12345/p/3597597.html)
+- [白话经典算法系列之五归并排序的实现](https://blog.csdn.net/MoreWindows/article/details/6678165)
+- [算法的时间复杂度和空间复杂度](https://www.cnblogs.com/songQQ/archive/2009/10/20/1587122.html)
+- [堆排序](https://www.cnblogs.com/dolphin0520/archive/2011/10/06/2199741.html)
+- [堆排序2](https://www.cnblogs.com/skywang12345/p/3602162.html)
