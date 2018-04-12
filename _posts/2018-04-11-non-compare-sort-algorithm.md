@@ -391,3 +391,4 @@ console.log(bucketSort(arr));
 - [常用排序算法总结(二)](https://www.cnblogs.com/eniac12/p/5332117.html)
 - [三大线性排序之桶排序](https://www.cnblogs.com/hxsyl/p/3214379.html)
 
+我的博客即将搬运同步至腾讯云+社区，邀请大家一同入驻：https://cloud.tencent.com/developer/support-plan?invite_code=2mn876wro42s8
