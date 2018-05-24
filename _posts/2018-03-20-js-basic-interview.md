@@ -137,6 +137,18 @@ B.prototype.constructor = B;
 var b = new B();
 
 function myInstanceOf(obj1, obj2) {
+    if (typeof obj2 !== 'object') {
+        return new throw("Right-hand side of 'instanceof' is not an object");
+    }
+
+    if (typeof obj1 !== 'object') {
+        return false;
+    }
+    
+    if (obj2.prototype.__proto__ === null) {
+        return true;
+    }
+    
     var _p;
     var isInstanceOf = false;
     while(_p = obj1.__proto__) {
