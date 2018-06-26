@@ -79,7 +79,7 @@ class App extends Component {
   }
 }
 ```
-[page](http://oyo3prim6.bkt.clouddn.com/taro/page.png)
+![page](http://oyo3prim6.bkt.clouddn.com/taro/page.png)
 
 ## Taro感受
 
@@ -106,11 +106,11 @@ class App extends Component {
 ```
 文档中缺乏了nodes以及onTap方法的说明，这可能需要开发者自己调试。但实际上我按照微信小程序的方法加上`onTap`之后，控制台是报方法未定义的错误，而实际上我是有写的。【**这点要是在实际开发中可能欲哭无泪，要么就是引入其他的库或者自己手写，无疑会增加开发成本以及风险**】。
 
-[error](http://oyo3prim6.bkt.clouddn.com/taro/error.png)
+![error](http://oyo3prim6.bkt.clouddn.com/taro/error.png)
 
 有人或许想说，我直接在生成的微信小程序代码文件夹(dist)中加上不就可以了，但是你可能不是太好改，因为代码是这样的：
 
-[source](http://oyo3prim6.bkt.clouddn.com/taro/source.png)
+![source](http://oyo3prim6.bkt.clouddn.com/taro/source.png)
 
 ## 总结
 
