@@ -50,5 +50,5 @@ export NVM_DIR="$HOME/.nvm"
 ### 安装node版本
 
 ```shell
-nvm 8.11.3
+nvm install 8.11.3
 ```
