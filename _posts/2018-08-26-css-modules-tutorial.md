@@ -3,7 +3,7 @@ layout: post
 title:  "CSS Modules入门教程"
 date:   2018-08-26
 categories: 技术
-excerpt: '为什么引入CSS Modules 或者可以这么说，CSS Modules为我们解决了什么痛点。针对以往我写网页样式的经验，具体来说可以归纳为以下几点：全局样式冲突 过程是这样的：你现在有两个模块，分别为A、B,你可能会单独针对这两个模块编写自己的样式，例如a.css、b.css，看一下代码 // A.js import ./a.css'
+excerpt: '为什么引入CSS Modules 或者可以这么说，CSS Modules为我们解决了什么痛点。针对以往我写网页样式的经验，具体来说可以归纳为以下几点：全局样式冲突 过程是这样的：你现在有两个模块，分别为A、B,你可能会单独针对这两个模块编写自己的样式，例如a.css、b.css，看一下代码 A.js import a.css'
 tag: [css,css modules]
 ---
 
