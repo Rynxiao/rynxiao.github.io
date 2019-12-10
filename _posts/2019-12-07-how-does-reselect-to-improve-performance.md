@@ -9,22 +9,22 @@ tag: [react,redux,reselect]
 
 ## reselect是什么？
 
-[reselect](https://github.com/reduxjs/reselect)是配合`redux`使用的一款轻量型的状态选择库，目的在于当`store`中的`state`重新改变之后，使得局部未改变的状态不会因为整体的`state`变化而全部重新渲染，功能有点类似于组件中的生命周期函数`shouldComponentDidUpdate`，但是它们并不是一个东西。下面是官方的一些简介：
+[reselect](https://github.com/reduxjs/reselect)是配合`redux`使用的一款轻量型的状态选择库，目的在于当store中的state重新改变之后，使得局部未改变的状态不会因为整体的state变化而全部重新渲染，功能有点类似于组件中的生命周期函数`shouldComponentDidUpdate`，但是它们并不是一个东西。下面是官方的一些简介：
 
 > - Selectors can compute derived data, allowing Redux to store the minimal possible state.
 > - Selectors are efficient. A selector is not recomputed unless one of its arguments changes.
 > - Selectors are composable. They can be used as input to other selectors.
 
-**[注]**：并不是`reselect`非要和`redux`绑定使用不可，可以说`reselect`只是一个`enhancement`，并不代表强耦合。
+**[注]**：并不是reselect非要和redux绑定使用不可，可以说reselect只是一个enhancement，并不代表强耦合。
 
 ## 什么时候用reselect?
 
 - `store`状态树庞大且层次较深
 - 组件中的state需要经过复杂的计算才能呈现在界面上
 
-个人认为符合这两点就可以使用`reselect`，为什么？简单的`state`或许根本完全没有必要引入`redux`，状态管理组件内部就可以消化，再者`reselect`只是在参数级别的缓存，如果组件状态逻辑并不是特别复杂，只是简单的`getter`，那也可不必引入`reselect`。
+个人认为符合这两点就可以使用reselect，为什么？简单的state或许根本完全没有必要引入redux，状态管理组件内部就可以消化，再者reselect只是在参数级别的缓存，如果组件状态逻辑并不是特别复杂，只是简单的getter，那也可不必引入reselect。
 
-**[建议]**：建议引入了`redux`就可以引入`reselect`，去看官方的源码，总共加起来才短短的108行代码，对测试并没有什么成本，同时加入也不会对打包体积造成什么影响，但是有些时候对组件渲染的性能却有很大的改善。
+**[建议]**：建议引入了redux就可以引入reselect，去看官方的源码，总共加起来才短短的108行代码，对测试并没有什么成本，同时加入也不会对打包体积造成什么影响，但是有些时候对组件渲染的性能却有很大的改善。
 
 ## 基本用法
 
@@ -116,7 +116,7 @@ export function defaultMemoize(func, equalityCheck = defaultEqualityCheck) {
 }
 ```
 
-`memoize`是`reselect`中提供的默认缓存函数，可以的得知执行这个函数的时候，返回的函数即为上面代码中的`selector`，那么`arguments`即为传入的`state`，通过`areArgumentsShallowlyEqual`比较两次传入的参数是否相等，注意，这里是浅比较，即第一层引用的比较
+`memoize`是reselect中提供的默认缓存函数，可以的得知执行这个函数的时候，返回的函数即为上面代码中的`selector`，那么`arguments`即为传入的state，通过`areArgumentsShallowlyEqual`比较两次传入的参数是否相等，注意，这里是浅比较，即第一层引用的比较
 
 ```javascript
 function defaultEqualityCheck(a, b) {
@@ -132,7 +132,7 @@ func.apply(null, arguments)
 
 这里会计算得到所有的依赖，然后得到下一轮缓存函数的`params`。
 
-就`redux`的`reducer`来讲，这层缓存并没有什么作用，看看`reducer`代码：
+就redux的reducer来讲，这层缓存并没有什么作用，看看reducer代码：
 
 ```javascript
 function reducer(state, action) {
@@ -146,9 +146,9 @@ function reducer(state, action) {
 }
 ```
 
-`redux`社区推崇所有的`state`都是不可变的，所以只要`dispatch`了一个`action`，每次返回的`state`必然会是一个新的对象，对于浅比较每次返回的结果必然是`true`;
+redux社区推崇所有的state都是不可变的，所以只要dispatch了一个action，每次返回的state必然会是一个新的对象，对于浅比较每次返回的结果必然是`true`;
 
-所以，缓存的关键还在第二层`momoize`，因为这里的`state`并不是每一次都必须变化：
+所以，缓存的关键还在第二层`momoize`，因为这里的state并不是每一次都必须变化：
 
 ```javascript
 const resultFunc = funcs.pop()
