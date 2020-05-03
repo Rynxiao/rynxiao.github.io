@@ -103,7 +103,7 @@ P12文件中包含了你的证书(包含了你的公钥)和你的私钥。
 
 选择`Export`，其间会要求你输入密码。
 
-###描述文件(provisioning Profiles)
+### 描述文件(provisioning Profiles)
 
 简单来说，描述文件其实就是一份清单，包含了App中的一些必要信息，主要包括
 
@@ -255,7 +255,7 @@ fastlane init
     end
     ```
 
-####[开发打包(Beta Deployment)](https://docs.fastlane.tools/getting-started/ios/beta-deployment/)
+#### [开发打包(Beta Deployment)](https://docs.fastlane.tools/getting-started/ios/beta-deployment/)
 
 如果证书已经搞定，下面就要使用`build_app(gym)`打开发包进行测试了
 
