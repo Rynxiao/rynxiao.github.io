@@ -1,7 +1,8 @@
 ---
 layout: default
 home-title: 糊糊糊糊糊了
-description: 糊涂但求一笑，疯狂偏耽余生 [Thoughtworks内推，可以将简历发送至yhhu@thoughtworks.com]
+description: 糊涂但求一笑，疯狂偏耽余生
+ads: Thoughtworks内推，可以将简历发送至yhhu@thoughtworks.com
 ---
 
 {% include header.html %}
@@ -9,6 +10,7 @@ description: 糊涂但求一笑，疯狂偏耽余生 [Thoughtworks内推，可�
 <div class="g-banner home-banner {{ site.theme-color | prepend: 'banner-theme-' }}" data-theme="{{ site.theme-color }}">
     <h2>{{ page.home-title }}</h2>
     <h3>{{ page.description }}</h3>
+    <h3>{{ page.ads }}</h3>
     {% if page.header-img %}
     <img class="header-img" src="/{{ page.header-img }}" alt="">
     {% endif %}
