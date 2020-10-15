@@ -12,7 +12,7 @@
 <header class="g-banner post-header {{ site.postPatterns | prepend: 'post-pattern-' }} {{ site.theme-color | prepend: 'bgcolor-' }} {% unless page.cover %}post-no-cover{% endunless %}" data-theme="{{ site.theme-color }}">
     <div class="post-wrapper">
         <div class="post-tags">
-            {% if page.tags.size > 0 %} 
+            {% if page.tags.size > 0 %}
             {% for tag in page.tags  %}
             <a href="{{ site.baseurl }}tags#{{ tag }}" class="post-tag">{{ tag }}</a>
             {% endfor %}
@@ -79,7 +79,7 @@
             {% endif %}
         </div>
         {% endif %}
-        {% if page.previous.url %} 
+        {% if page.previous.url %}
         <div class="read-next-item">
             <a href="{{ page.previous.url }}" class="read-next-link"></a>
             <section>
@@ -170,5 +170,17 @@ s.setAttribute('data-timestamp', +new Date());
 <script src="/assets/js/prism.js"></script>
 <script src="/assets/js/index.min.js"></script>
 <script src="/assets/js/progress.js"></script>
+<script>
+    $(document).ready(function() {
+        if (window.performance) {
+            var timeSincePageLoad = Math.round(performance.now());
+            gata('event', 'timing_complete', {
+                'name': 'load',
+                'value': timeSincePageLoad,
+                'event_category': 'JS Dependencies'
+            });
+        }
+    });
+</script>
 </body>
 </html>
