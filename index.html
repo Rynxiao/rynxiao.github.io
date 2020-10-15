@@ -2,7 +2,6 @@
 layout: default
 home-title: 糊糊糊糊糊了
 description: 糊涂但求一笑，疯狂偏耽余生
-ads: Thoughtworks内推，可以将简历发送至yhhu@thoughtworks.com
 ---
 
 {% include header.html %}
@@ -10,7 +9,6 @@ ads: Thoughtworks内推，可以将简历发送至yhhu@thoughtworks.com
 <div class="g-banner home-banner {{ site.theme-color | prepend: 'banner-theme-' }}" data-theme="{{ site.theme-color }}">
     <h2>{{ page.home-title }}</h2>
     <h3>{{ page.description }}</h3>
-    <h3>{{ page.ads }}</h3>
     {% if page.header-img %}
     <img class="header-img" src="/{{ page.header-img }}" alt="">
     {% endif %}
@@ -88,6 +86,11 @@ ads: Thoughtworks内推，可以将简历发送至yhhu@thoughtworks.com
                 {% endfor %}
             </section>
             {% endif %}
+        </div>
+
+        <div class="ads">
+            <div>Thoughtworks内推，长期有效！！！</div>
+            <div>简历发送至yhhu@thoughtworks.com</div>
         </div>
 
         {% if site.search %}
