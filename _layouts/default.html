@@ -14,7 +14,7 @@
         $(document).ready(function() {
             if (window.performance) {
                 var timeSincePageLoad = Math.round(performance.now());
-                gata('event', 'timing_complete', {
+                gtag('event', 'timing_complete', {
                     'name': 'load',
                     'value': timeSincePageLoad,
                     'event_category': 'JS Dependencies'
