@@ -10,17 +10,5 @@
     <script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
     <script src="/assets/js/prism.js"></script>
     <script src="/assets/js/index.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            if (window.performance) {
-                var timeSincePageLoad = Math.round(performance.now());
-                gtag('event', 'timing_complete', {
-                    'name': 'load',
-                    'value': timeSincePageLoad,
-                    'event_category': 'JS Dependencies'
-                });
-            }
-        });
-    </script>
 </body>
 </html>
